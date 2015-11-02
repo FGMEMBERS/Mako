@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+<path>pilots.ac</path>
+
+ 
+<animation>
+        <type>range</type>
+        <min-m>0</min-m>
+        <max-m>75</max-m>
+    </animation>
+
+	<animation>
+      <type>select</type>
+      <condition>
+        <not><property>sim/model/hd-pilot</property></not>
+      </condition>
+    </animation>
+
+	
+	
+</PropertyList>
+

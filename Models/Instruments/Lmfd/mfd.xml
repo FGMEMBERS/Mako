@@ -1,0 +1,904 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+<path>mfd.ac</path>
+
+  <!-- *************************************************************************
+       ********************* Texts ******************************************
+       ********************************************************************* -->
+	
+	<text>
+		<name>GS</name>
+		<offsets>
+			<x-m>0.002</x-m>
+			<y-m>-0.075</y-m>
+			<z-m>0.1</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">GS %3.0f KT</format>
+		<property>velocities/groundspeed-kt</property>
+		<draw-boundingbox type="bool">true</draw-boundingbox>
+		<font>typewrighter.txf</font>
+		<character-size>0.007</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	
+	<text>
+		<name>tacan ID</name>
+		<offsets>
+			 <x-m>0.002</x-m>
+       <y-m>0</y-m>
+       <z-m>-0.065</z-m>
+		</offsets>
+		<alignment>center-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">%s</format>
+		<property>instrumentation/tacan/name</property>
+		<draw-boundingbox type="bool">true</draw-boundingbox>
+		<font>typewrighter.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	
+	<text>
+		<name>tacan ETA</name>
+		<offsets>
+			 <x-m>0.002</x-m>
+       <y-m>0</y-m>
+       <z-m>-0.075</z-m>
+		</offsets>
+		<alignment>center-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">ETA: %3.5s</format>
+		<property>instrumentation/tacan/indicated-time-min</property>
+		<draw-boundingbox type="bool">false</draw-boundingbox>
+		<font>typewrighter.txf</font>
+		<character-size>0.007</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	
+	<text>
+		<name>tacan DME</name>
+		<offsets>
+			 <x-m>0.002</x-m>
+       <y-m>-0.07</y-m>
+       <z-m>-0.012</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">DME: %3.5s</format>
+		<property>instrumentation/tacan/indicated-distance-nm</property>
+		<draw-boundingbox type="bool">false</draw-boundingbox>
+		<font>typewrighter.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	
+	<text>
+		<name>navl ID</name>
+		<offsets>
+			 <x-m>0.002</x-m>
+       <y-m>-0.067</y-m>
+       <z-m>-0.094</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">%s</format>
+		<property>instrumentation/nav[0]/nav-id</property>
+		<draw-boundingbox type="bool">false</draw-boundingbox>
+		<font>typewrighter.txf</font>
+		<character-size>0.007</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	
+	<text>
+		<name>navr ID</name>
+		<offsets>
+			 <x-m>0.002</x-m>
+       <y-m>0.067</y-m>
+       <z-m>-0.094</z-m>
+		</offsets>
+		<alignment>right-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">%s</format>
+		<property>instrumentation/nav[1]/nav-id</property>
+		<draw-boundingbox type="bool">false</draw-boundingbox>
+		<font>typewrighter.txf</font>
+		<character-size>0.007</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	
+	<text>
+		<name>navl DME</name>
+		<offsets>
+			 <x-m>0.002</x-m>
+       <y-m>-0.067</y-m>
+       <z-m>-0.101</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">DME: %3.5s</format>
+		<property>instrumentation/dme[0]/indicated-distance-nm</property>
+		<draw-boundingbox type="bool">false</draw-boundingbox>
+		<font>typewrighter.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	
+	<!-- *************************************************************************
+       ********************* Material ******************************************
+       ********************************************************************* -->
+	
+	<animation>
+		<name>White text</name>
+		<type>material</type>
+		<object-name>GS</object-name>
+		<object-name>tacan ETA</object-name>
+		<object-name>tacan ID</object-name>
+		<object-name>tacan DME</object-name>
+		<object-name>navl ID</object-name>
+		<object-name>navr ID</object-name>
+		<object-name>navl DME</object-name>
+	  <emission>
+			<red>1</red>
+			<green>1</green>
+			<blue>1</blue>
+		</emission>
+	</animation>
+	
+   <animation>
+    <type>material</type>
+    <object-name>button0</object-name>
+    <object-name>button1</object-name>
+    <object-name>bcg</object-name>
+   <emission>
+      <red>1</red>
+      <green>1</green>
+      <blue>1</blue>
+      <factor>0.5</factor>
+    </emission>
+  </animation>
+  
+  <animation>
+    <type>material</type>
+    <object-name>rose</object-name>
+    <object-name>bug</object-name>
+    <object-name>gsindex</object-name>
+    <object-name>gsarrow</object-name>
+    <object-name>gsarrow2</object-name>
+    <object-name>hdg3</object-name>
+    <object-name>hdg2</object-name>
+    <object-name>hdg1</object-name>
+    <object-name>locindex</object-name>
+    <object-name>locindex2</object-name>
+    <object-name>tacanlabel</object-name>
+    <object-name>vorllabel</object-name>
+    <object-name>vorrlabel</object-name>
+    <object-name>arrow1</object-name>
+    <object-name>arrow2</object-name>
+    <object-name>arrow3</object-name>
+    <object-name>arrow12</object-name>
+    <object-name>arrow22</object-name>
+    <object-name>arrow32</object-name>
+    <object-name>arrow4</object-name>
+    <object-name>arrow5</object-name>
+    <object-name>arrow42</object-name>
+    <emission>
+      <red>1</red>
+      <green>1</green>
+      <blue>1</blue>
+      <factor>1</factor>
+    </emission>
+  </animation>
+  
+  <!-- *************************************************************************
+       **********************  AI **********************************************
+       ********************************************************************* -->
+  <animation>
+   <type>texmultiple</type>
+   <object-name>ai</object-name>
+   <transform>
+     <property>/orientation/pitch-deg</property>
+     <subtype>textranslate</subtype>
+     <factor>0.00314</factor>
+     <axis>
+       <x>0</x>
+       <y>1</y>
+       <z>0</z>
+     </axis>
+   </transform>
+   <transform>
+     <property>/orientation/roll-deg</property>
+     <subtype>texrotate</subtype>
+     <center>
+       <x>0.25</x>
+       <y>0.50</y>
+     </center>
+     <axis>
+       <x>0</x>
+       <y>0</y>
+       <z>-1</z>
+     </axis>
+   </transform>
+ </animation>
+
+<!-- *************************************************************************
+       **********************  Enav ********************************************
+       ********************************************************************* -->
+
+<animation>
+	 <type>select</type>
+	 <object-name>rose</object-name>
+	 <object-name>gsindex</object-name> 
+	 <object-name>bug</object-name>
+	 <object-name>hdg3</object-name>
+	 <object-name>hdg2</object-name>
+	 <object-name>hdg1</object-name>
+	 <object-name>tacanlabel</object-name>
+	 <object-name>tacan DME</object-name>
+	 <object-name>navl ID</object-name>
+	 <object-name>navr ID</object-name>
+	 <object-name>navl DME</object-name>
+	 <condition>
+		 <not>
+		 	<equals>
+				 <property>instrumentation/enav[0]/selected</property>
+			 	<value>4</value>
+		 	</equals>
+		</not>
+	 </condition>
+ </animation>
+ 
+ <animation>
+	 <type>select</type>
+	 <object-name>tacan ETA</object-name>
+	 <object-name>tacan ID</object-name>
+	 <object-name>arrow5</object-name>
+	 <condition>   
+		<equals>
+		 <property>instrumentation/enav[0]/selected</property>
+		 <value>3</value>
+	 	</equals>
+	 </condition>
+ </animation>
+ 
+  <animation>
+	 <type>select</type>
+	 <object-name>arrow4</object-name>
+	 <object-name>arrow42</object-name>
+	 <condition>
+		 <equals>
+			 <property>instrumentation/enav[0]/selected</property>
+			 <value>2</value>
+		 </equals>
+	 </condition>
+ </animation>
+ 
+ <animation>
+	 <type>select</type>
+	 <object-name>gsarrow2</object-name>
+	 <object-name>locindex2</object-name>
+	 <object-name>arrow12</object-name>
+	 <object-name>arrow22</object-name>
+	 <object-name>arrow32</object-name>
+	 <condition>
+		 <equals>
+			 <property>instrumentation/enav[0]/selected</property>
+			 <value>1</value>
+	 	</equals>
+	 </condition>
+ </animation>
+ 
+<animation>
+	 <type>select</type>
+	 <object-name>gsarrow</object-name>
+	 <object-name>locindex</object-name>
+	 <object-name>arrow1</object-name>
+	 <object-name>arrow2</object-name>
+	 <object-name>arrow3</object-name>
+	 <condition>   
+		<equals>
+		 <property>instrumentation/enav[0]/selected</property>
+		 <value>0</value>
+	 	</equals>
+	 </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>vorllabel</object-name>
+  <condition>
+  <and>
+    <not>
+      <equals>
+        <property>instrumentation/enav[0]/selected</property>
+          <value>4</value>
+      </equals>
+    </not>
+    <equals>
+      <property>instrumentation/nav[0]/nav-loc</property>
+      <value>false</value>
+    </equals>
+    <property>instrumentation/nav[0]/in-range</property>
+  </and>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>vorrlabel</object-name>
+  <condition>
+  <and>
+    <not>
+      <equals>
+        <property>instrumentation/enav[0]/selected</property>
+        <value>4</value>
+      </equals>
+    </not>
+    <equals>
+      <property>instrumentation/nav[1]/nav-loc</property>
+      <value>false</value>
+    </equals>
+    <property>instrumentation/nav[1]/in-range</property>
+  </and>
+  </condition>
+ </animation>
+        
+ <animation>
+  <type>rotate</type>
+  <object-name>rose</object-name>
+  <property>orientation/heading-deg</property>
+  <center>
+  <x-m>0</x-m>
+  <y-m>0</y-m>
+  <z-m>-0.052</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z></z>
+  </axis>
+ </animation>
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>bug</object-name>
+  <property>autopilot/settings/heading-bug-deg</property>
+  <center>
+  <x-m>0</x-m>
+  <y-m>0</y-m>
+  <z-m>-0.052</z-m>
+  </center>
+  <axis>
+   <x>-1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>locindex</object-name>
+  <property>instrumentation/nav[0]/radials/selected-deg</property>
+  <center>
+  <x-m>0</x-m>
+  <y-m>0</y-m>
+  <z-m>-0.052</z-m>
+  </center>
+  <axis>
+   <x>-1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ <animation>
+	 <type>rotate</type>
+	 <object-name>locindex</object-name>
+	 <property>orientation/heading-magnetic-deg</property>
+	 <center>
+  <x-m>0</x-m>
+  <y-m>0</y-m>
+  <z-m>-0.052</z-m>
+  </center>
+	 <axis>
+		 <x>1</x>
+		 <y>0</y>
+		 <z>0</z>
+	 </axis>
+ </animation>
+ 
+ <animation>
+	 <type>rotate</type>
+	 <object-name>locindex2</object-name>
+	 <property>instrumentation/nav[1]/radials/selected-deg</property>
+	 <center>
+  <x-m>0</x-m>
+  <y-m>0</y-m>
+  <z-m>-0.052</z-m>
+  </center>
+	 <axis>
+		 <x>-1</x>
+		 <y>0</y>
+		 <z>0</z>
+	 </axis>
+ </animation>
+ <animation>
+	 <type>rotate</type>
+	 <object-name>locindex2</object-name>
+	 <property>orientation/heading-magnetic-deg</property>
+	 <center>
+  <x-m>0</x-m>
+  <y-m>0</y-m>
+  <z-m>-0.052</z-m>
+  </center>
+	 <axis>
+		 <x>1</x>
+		 <y>0</y>
+		 <z>0</z>
+	 </axis>
+ </animation>
+ 
+ <animation>
+	 <type>rotate</type>
+	 <object-name>arrow1</object-name>
+	 <property>instrumentation/nav[0]/radials/selected-deg</property>
+	 <center>
+  <x-m>0</x-m>
+  <y-m>0</y-m>
+  <z-m>-0.052</z-m>
+  </center>
+	 <axis>
+		 <x>-1</x>
+		 <y>0</y>
+		 <z>0</z>
+	 </axis>
+ </animation>
+ <animation>
+	 <type>rotate</type>
+	 <object-name>arrow1</object-name>
+	 <property>orientation/heading-magnetic-deg</property>
+	 <center>
+  <x-m>0</x-m>
+  <y-m>0</y-m>
+  <z-m>-0.052</z-m>
+  </center>
+	 <axis>
+		 <x>1</x>
+		 <y>0</y>
+		 <z>0</z>
+	 </axis>
+ </animation>
+ 
+ <animation>
+	 <type>rotate</type>
+	 <object-name>arrow2</object-name>
+	 <property>instrumentation/nav[0]/radials/selected-deg</property>
+	 <center>
+  <x-m>0</x-m>
+  <y-m>0</y-m>
+  <z-m>-0.052</z-m>
+  </center>
+	 <axis>
+		 <x>-1</x>
+		 <y>0</y>
+		 <z>0</z>
+	 </axis>
+ </animation>
+ <animation>
+	 <type>rotate</type>
+	 <object-name>arrow2</object-name>
+	 <property>orientation/heading-magnetic-deg</property>
+	 <center>
+  <x-m>0</x-m>
+  <y-m>0</y-m>
+  <z-m>-0.052</z-m>
+  </center>
+	 <axis>
+		 <x>1</x>
+		 <y>0</y>
+		 <z>0</z>
+	 </axis>
+ </animation>
+ 
+ <animation>
+	 <type>rotate</type>
+	 <object-name>arrow3</object-name>
+	 <property>instrumentation/nav[0]/radials/selected-deg</property>
+	 <center>
+  <x-m>0</x-m>
+  <y-m>0</y-m>
+  <z-m>-0.052</z-m>
+  </center>
+	 <axis>
+		 <x>-1</x>
+		 <y>0</y>
+		 <z>0</z>
+	 </axis>
+ </animation>
+ <animation>
+	 <type>rotate</type>
+	 <object-name>arrow3</object-name>
+	 <property>orientation/heading-magnetic-deg</property>
+	 <center>
+  <x-m>0</x-m>
+  <y-m>0</y-m>
+  <z-m>-0.052</z-m>
+  </center>
+	 <axis>
+		 <x>1</x>
+		 <y>0</y>
+		 <z>0</z>
+	 </axis>
+ </animation>
+ 
+ <animation>
+	 <type>rotate</type>
+	 <object-name>arrow12</object-name>
+	 <property>instrumentation/nav[1]/radials/selected-deg</property>
+	 <center>
+  <x-m>0</x-m>
+  <y-m>0</y-m>
+  <z-m>-0.052</z-m>
+  </center>
+	 <axis>
+		 <x>-1</x>
+		 <y>0</y>
+		 <z>0</z>
+	 </axis>
+ </animation>
+ <animation>
+	 <type>rotate</type>
+	 <object-name>arrow12</object-name>
+	 <property>orientation/heading-magnetic-deg</property>
+	 <center>
+  <x-m>0</x-m>
+  <y-m>0</y-m>
+  <z-m>-0.052</z-m>
+  </center>
+	 <axis>
+		 <x>1</x>
+		 <y>0</y>
+		 <z>0</z>
+	 </axis>
+ </animation>
+ 
+ <animation>
+	 <type>rotate</type>
+	 <object-name>arrow22</object-name>
+	 <property>instrumentation/nav[1]/radials/selected-deg</property>
+	 <center>
+  <x-m>0</x-m>
+  <y-m>0</y-m>
+  <z-m>-0.052</z-m>
+  </center>
+	 <axis>
+		 <x>-1</x>
+		 <y>0</y>
+		 <z>0</z>
+	 </axis>
+ </animation>
+ <animation>
+	 <type>rotate</type>
+	 <object-name>arrow22</object-name>
+	 <property>orientation/heading-magnetic-deg</property>
+	 <center>
+  <x-m>0</x-m>
+  <y-m>0</y-m>
+  <z-m>-0.052</z-m>
+  </center>
+	 <axis>
+		 <x>1</x>
+		 <y>0</y>
+		 <z>0</z>
+	 </axis>
+ </animation>
+ 
+ <animation>
+	 <type>rotate</type>
+	 <object-name>arrow32</object-name>
+	 <property>instrumentation/nav[1]/radials/selected-deg</property>
+	 <center>
+  <x-m>0</x-m>
+  <y-m>0</y-m>
+  <z-m>-0.052</z-m>
+  </center>
+	 <axis>
+		 <x>-1</x>
+		 <y>0</y>
+		 <z>0</z>
+	 </axis>
+ </animation>
+ <animation>
+	 <type>rotate</type>
+	 <object-name>arrow32</object-name>
+	 <property>orientation/heading-magnetic-deg</property>
+	 <center>
+  <x-m>0</x-m>
+  <y-m>0</y-m>
+  <z-m>-0.052</z-m>
+  </center>
+	 <axis>
+		 <x>1</x>
+		 <y>0</y>
+		 <z>0</z>
+	 </axis>
+ </animation>
+ 
+ <animation>
+	<type>rotate</type>
+	<object-name>arrow4</object-name>
+	<property>orientation/heading-magnetic-deg</property>
+	<center>
+  <x-m>0</x-m>
+  <y-m>0</y-m>
+  <z-m>-0.052</z-m>
+  </center>
+	<axis>
+		<x>1</x>
+		<y>0</y>
+		<z>0</z>
+	</axis>
+ </animation>
+ <animation>
+	 <type>rotate</type>
+	 <object-name>arrow4</object-name>
+	 <property>instrumentation/nav[0]/heading-deg</property>
+	 <center>
+  <x-m>0</x-m>
+  <y-m>0</y-m>
+  <z-m>-0.052</z-m>
+  </center>
+	 <axis>
+		 <x>-1</x>
+		 <y>0</y>
+		 <z>0</z>
+	 </axis>
+ </animation>
+ 
+ <animation>
+	<type>rotate</type>
+	<object-name>arrow42</object-name>
+	<property>orientation/heading-magnetic-deg</property>
+	<center>
+  <x-m>0</x-m>
+  <y-m>0</y-m>
+  <z-m>-0.052</z-m>
+  </center>
+	<axis>
+		<x>1</x>
+		<y>0</y>
+		<z>0</z>
+	</axis>
+ </animation>
+ <animation>
+	 <type>rotate</type>
+	 <object-name>arrow42</object-name>
+	 <property>instrumentation/nav[1]/heading-deg</property>
+	 <center>
+  <x-m>0</x-m>
+  <y-m>0</y-m>
+  <z-m>-0.052</z-m>
+  </center>
+	 <axis>
+		 <x>-1</x>
+		 <y>0</y>
+		 <z>0</z>
+	 </axis>
+ </animation>
+ 
+ <animation>
+	 <type>rotate</type>
+	 <object-name>arrow5</object-name>
+	 <property>orientation/heading-magnetic-deg</property>
+	 <center>
+  <x-m>0</x-m>
+  <y-m>0</y-m>
+  <z-m>-0.052</z-m>
+  </center>
+	 <axis>
+		 <x>1</x>
+		 <y>0</y>
+		 <z>0</z>
+	 </axis>
+ </animation>
+ <animation>
+	 <type>rotate</type>
+	 <object-name>arrow5</object-name>
+	 <property>instrumentation/tacan/indicated-bearing-true-deg</property>
+	 <offset>environment/magnetic-variation-deg</offset>
+	  <center>
+  <x-m>0</x-m>
+  <y-m>0</y-m>
+  <z-m>-0.052</z-m>
+  </center>
+	 <axis>
+		 <x>-1</x>
+		 <y>0</y>
+		 <z>0</z>
+	 </axis>
+ </animation>
+ <animation>
+	 <type>rotate</type>
+	 <object-name>arrow5</object-name>
+	 <property>environment/magnetic-variation-deg</property>
+	 <center>
+  <x-m>0</x-m>
+  <y-m>0</y-m>
+  <z-m>-0.052</z-m>
+  </center>
+	 <axis>
+		 <x>1</x>
+		 <y>0</y>
+		 <z>0</z>
+	 </axis>
+ </animation>
+ 
+ <animation>
+  <type>translate</type>
+  <object-name>gsarrow</object-name>
+  <property>instrumentation/nav[0]/gs-needle-deflection</property>
+  <factor>0.003372</factor>
+  <min-m>-0.03372</min-m>
+  <max-m>0.03372</max-m>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+ 
+ <animation>
+	 <type>translate</type>
+	 <object-name>gsarrow2</object-name>
+	 <property>instrumentation/nav[1]/gs-needle-deflection</property>
+	 <factor>0.003372</factor>
+	 <min-m>-0.03372</min-m>
+	 <max-m>0.03372</max-m>
+	 <axis>
+		 <x>0</x>
+		 <y>0</y>
+		 <z>1</z>
+	 </axis>
+ </animation>
+ 
+ <animation>
+  <type>translate</type>
+  <object-name>arrow2</object-name>
+  <property>instrumentation/nav[0]/heading-needle-deflection</property>
+  <factor>0.003875</factor>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ 
+ <animation>
+	 <type>translate</type>
+	 <object-name>arrow22</object-name>
+	 <property>instrumentation/nav[1]/heading-needle-deflection</property>
+	 <factor>0.003875</factor>
+	 <axis>
+		 <x>0</x>
+		 <y>1</y>
+		 <z>0</z>
+	 </axis>
+ </animation>
+ 
+ <animation>
+  <type>textranslate</type>
+  <object-name>hdg1</object-name>
+  <property>orientation/heading-magnetic-deg</property>
+  <factor>0.10</factor>
+  <step>1</step>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>textranslate</type>
+  <object-name>hdg2</object-name>
+  <property>orientation/heading-magnetic-deg</property>
+  <factor>0.01</factor>
+  <step>10</step>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>textranslate</type>
+  <object-name>hdg3</object-name>
+  <property>orientation/heading-magnetic-deg</property>
+  <factor>0.001</factor>
+  <step>100</step>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ 
+
+<!-- *************************************************************************
+       ********************* Pick Buttons **************************************
+       ********************************************************************* --> 
+ <animation>
+<type>pick</type>
+<object-name>button0</object-name>
+<action>
+<button>0</button>
+<repeatable>true</repeatable>
+  <binding>
+      <command>property-adjust</command>
+      <property>instrumentation/enav[0]/selected</property>
+      <step>-1</step>
+      <min>0</min>
+      <max>3</max>
+</binding>
+</action>
+</animation>
+
+<animation>
+<type>pick</type>
+<object-name>button1</object-name>
+<action>
+<button>0</button>
+<repeatable>true</repeatable>
+  <binding>
+      <command>property-adjust</command>
+      <property>instrumentation/enav[0]/selected</property>
+      <step>1</step>
+      <min>0</min>
+      <max>3</max>
+</binding>
+</action>
+</animation>
+ 
+	<animation>
+		<type>range</type>
+		<min-m>0</min-m>
+		<max-m>5</max-m>
+	</animation>
+</PropertyList>

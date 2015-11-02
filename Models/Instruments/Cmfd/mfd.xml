@@ -1,0 +1,510 @@
+<?xml version="1.0"?>
+<PropertyList>
+	<path>mfd.ac</path>
+	
+   <animation>
+    <type>material</type>
+    <object-name>box0</object-name>
+    <object-name>box1</object-name>
+    <object-name>bcg</object-name>
+    <emission>
+      <red>1</red>
+      <green>1</green>
+      <blue>1</blue>
+      <factor>0.5</factor>
+    </emission>
+  </animation>
+  
+  <animation>
+    <type>material</type>
+    <object-name>frame.N1</object-name>
+    <object-name>needle.N1</object-name>
+    <object-name>frame.EGT</object-name>
+    <object-name>needle.EGT</object-name>
+    <object-name>frame.FLAP</object-name>
+    <object-name>needle.FLAP</object-name>
+    <object-name>frame.gear</object-name>
+    <object-name>rpm1.L1</object-name>
+    <object-name>rpm1.L2</object-name>
+    <object-name>rpm1.L3</object-name>
+    <object-name>egt.1000</object-name>
+    <object-name>egt.100</object-name>
+    <object-name>egt.10</object-name>
+    <object-name>egt.1</object-name>
+    <object-name>e-mark</object-name>
+    <object-name>aft0</object-name>
+    <object-name>throttle</object-name>
+    <object-name>fuel TOT</object-name>
+    <object-name>abk</object-name>
+    <emission>
+      <red>1</red>
+      <green>1</green>
+      <blue>1</blue>
+      <factor>1</factor>
+    </emission>
+  </animation>
+  
+  <animation>
+		<type>rotate</type>
+		<object-name>needle.N1</object-name>
+		<property>engines/engine[0]/n1</property>
+		<factor>2</factor>
+		<center>
+			<x-m>0.000834</x-m>
+			<y-m>-0.028485</y-m>
+			<z-m>0.080914</z-m>
+		</center>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>rotate</type>
+		<object-name>needle.EGT</object-name>
+		<property>engines/engine[0]/egt-degf</property>
+		<factor>0.15</factor>
+    <center>
+			<x-m>0.041456</x-m>
+			<y-m>0.043667</y-m>
+			<z-m>0.077301</z-m>
+		</center>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>rotate</type>
+		<object-name>needle.FLAP</object-name>
+		<property>surface-positions/flap-pos-norm</property>
+		<factor>270</factor>
+    <center>
+			<x-m>0.041456</x-m>
+			<y-m>-0.050598</y-m>
+			<z-m>-0.006781</z-m>
+		</center>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	
+	<animation>
+	 <type>textranslate</type>
+	 <object-name>rpm1.L1</object-name>
+	 <property>engines/engine[0]/n1</property>
+	 <factor>0.001</factor>
+	 <step>100.0</step>
+	 <axis>
+		 <x>0</x>
+		 <y>-1</y>
+		 <z>0</z>
+	 </axis>
+ </animation>
+
+ <animation>
+	 <type>textranslate</type>
+	 <object-name>rpm1.L2</object-name>
+	 <property>engines/engine[0]/n1</property>
+	 <factor>0.01</factor>
+	 <step>10.0</step>
+	 <axis>
+		 <x>0</x>
+		 <y>-1</y>
+		 <z>0</z>
+	 </axis>
+ </animation>
+ 
+ <animation>
+	 <type>textranslate</type>
+	 <object-name>rpm1.L3</object-name>
+	 <property>engines/engine[0]/n1</property>
+	 <factor>0.1</factor>
+	 <step>1</step>
+	 <axis>
+		 <x>0</x>
+		 <y>-1</y>
+		 <z>0</z>
+	 </axis>
+ </animation>
+ 
+ <animation>
+	 <type>textranslate</type>
+	 <object-name>egt.1000</object-name>
+	 <property>engines/engine[0]/egt-degf</property>
+	 <factor>0.0001</factor>
+	 <step>1000</step>
+	 <axis>
+		 <x>0</x>
+		 <y>-1</y>
+		 <z>0</z>
+	 </axis>
+ </animation>
+
+ <animation>
+	 <type>textranslate</type>
+	 <object-name>egt.100</object-name>
+	 <property>engines/engine[0]/egt-degf</property>
+	 <factor>0.001</factor>
+	 <step>100</step>
+	 <axis>
+		 <x>0</x>
+		 <y>-1</y>
+		 <z>0</z>
+	 </axis>
+ </animation>
+ 
+ <animation>
+	 <type>textranslate</type>
+	 <object-name>egt.10</object-name>
+	 <property>engines/engine[0]/egt-degf</property>
+	 <factor>0.01</factor>
+	 <step>10</step>
+	 <axis>
+		 <x>0</x>
+		 <y>-1</y>
+		 <z>0</z>
+	 </axis>
+ </animation>
+ 
+ <animation>
+	 <type>textranslate</type>
+	 <object-name>egt.1</object-name>
+	 <property>engines/engine[0]/egt-degf</property>
+	 <factor>0.1</factor>
+	 <step>1</step>
+	 <axis>
+		 <x>0</x>
+		 <y>-1</y>
+		 <z>0</z>
+	 </axis>
+ </animation>
+ 
+ <animation>
+		<type>select</type>
+		<object-name>aft0</object-name>
+		<condition>
+			<property>/engines/engine[0]/afterburner</property>
+		</condition>
+	</animation>
+	
+	<text>
+		<name>fuel TOT</name>
+		<offsets>
+			 <x-m>0.002</x-m>
+       <y-m>0</y-m>
+       <z-m>-0.1</z-m>
+		</offsets>
+		<alignment>center-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">%3.6s Lbs</format>
+		<property>/consumables/fuel/total-fuel-lbs</property>
+		<draw-boundingbox type="bool">true</draw-boundingbox>
+		<font>typewrighter.txf</font>
+		<character-size>0.008</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	
+	<text>
+		<name>throttle</name>
+		<offsets>
+			 <x-m>0.002</x-m>
+       <y-m>0</y-m>
+       <z-m>0.03</z-m>
+		</offsets>
+		<alignment>center-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">Throttle: %3.4s</format>
+		<property>/controls/engines/engine/throttle</property>
+		<draw-boundingbox type="bool">true</draw-boundingbox>
+		<font>typewrighter.txf</font>
+		<character-size>0.008</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>level0</object-name>
+    <property>/consumables/fuel/tank[0]/level-norm</property>
+    <factor>0.49</factor>
+    <step>0.001</step>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>textranslate</type>
+    <object-name>level1</object-name>
+    <property>/consumables/fuel/tank[1]/level-norm</property>
+    <factor>0.49</factor>
+    <step>0.001</step>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>textranslate</type>
+    <object-name>level2</object-name>
+    <property>/consumables/fuel/tank[2]/level-norm</property>
+    <factor>0.49</factor>
+    <step>0.001</step>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>textranslate</type>
+    <object-name>level3</object-name>
+    <property>/consumables/fuel/tank[3]/level-norm</property>
+    <factor>0.49</factor>
+    <step>0.001</step>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>textranslate</type>
+    <object-name>level4</object-name>
+    <property>/consumables/fuel/tank[4]/level-norm</property>
+    <factor>0.49</factor>
+    <step>0.001</step>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+    </axis>
+  </animation>
+  
+<animation>
+    <type>material</type>
+    <object-name>frame0</object-name>
+    <object-name>frame1</object-name>
+    <object-name>frame2</object-name>
+    <object-name>frame3</object-name>
+    <object-name>frame4</object-name>
+    <object-name>level0</object-name>
+    <object-name>level1</object-name>
+    <object-name>level2</object-name>
+    <object-name>level3</object-name>
+    <object-name>level4</object-name>
+    <condition>
+    <greater-than>
+    <property>consumables/fuel/total-fuel-norm</property>
+    <value>0.5</value>
+    </greater-than>
+    </condition>
+    <diffuse>
+      <red>0</red>
+      <green>1</green>
+      <blue>0</blue>
+    </diffuse>
+    <emission>
+      <red>0</red>
+      <green>1</green>
+      <blue>0</blue>
+      <factor>0.5</factor>
+    </emission>
+  </animation>
+  
+<animation>
+    <type>material</type>
+    <object-name>frame0</object-name>
+    <object-name>frame1</object-name>
+    <object-name>frame2</object-name>
+    <object-name>frame3</object-name>
+    <object-name>frame4</object-name>
+    <object-name>level0</object-name>
+    <object-name>level1</object-name>
+    <object-name>level2</object-name>
+    <object-name>level3</object-name>
+    <object-name>level4</object-name>
+    <condition>
+    <and>
+    <less-than-equals>
+    <property>consumables/fuel/total-fuel-norm</property>
+    <value>0.5</value>
+    </less-than-equals>
+    <greater-than>
+    <property>consumables/fuel/total-fuel-norm</property>
+    <value>0.3</value>
+    </greater-than>
+    </and>
+    </condition>
+    <diffuse>
+      <red>1</red>
+      <green>1</green>
+      <blue>0</blue>
+    </diffuse>
+    <emission>
+      <red>1</red>
+      <green>1</green>
+      <blue>0</blue>
+      <factor>0.5</factor>
+    </emission>
+  </animation>
+  
+<animation>
+    <type>material</type>
+    <object-name>frame0</object-name>
+    <object-name>frame1</object-name>
+    <object-name>frame2</object-name>
+    <object-name>frame3</object-name>
+    <object-name>frame4</object-name>
+    <object-name>level0</object-name>
+    <object-name>level1</object-name>
+    <object-name>level2</object-name>
+    <object-name>level3</object-name>
+    <object-name>level4</object-name>
+    <condition>
+    <and>
+    <less-than-equals>
+    <property>consumables/fuel/total-fuel-norm</property>
+    <value>0.3</value>
+    </less-than-equals>
+    <greater-than>
+    <property>consumables/fuel/total-fuel-norm</property>
+    <value>0.15</value>
+    </greater-than>
+    </and>
+    </condition>
+    <diffuse>
+      <red>1</red>
+      <green>0.8</green>
+      <blue>0</blue>
+    </diffuse>
+    <emission>
+      <red>1</red>
+      <green>0.8</green>
+      <blue>0</blue>
+      <factor>0.5</factor>
+    </emission>
+  </animation>
+  
+<animation>
+    <type>material</type>
+    <object-name>frame0</object-name>
+    <object-name>frame1</object-name>
+    <object-name>frame2</object-name>
+    <object-name>frame3</object-name>
+    <object-name>frame4</object-name>
+    <object-name>level0</object-name>
+    <object-name>level1</object-name>
+    <object-name>level2</object-name>
+    <object-name>level3</object-name>
+    <object-name>level4</object-name>
+    <condition>
+    <less-than-equals>
+    <property>consumables/fuel/total-fuel-norm</property>
+    <value>0.15</value>
+    </less-than-equals>
+    </condition>
+    <diffuse>
+      <red>1</red>
+      <green>0</green>
+      <blue>0</blue>
+    </diffuse>
+    <emission>
+      <red>1</red>
+      <green>0</green>
+      <blue>0</blue>
+      <factor>0.5</factor>
+    </emission>
+  </animation>
+  
+  <animation>
+  <type>select</type>
+  <object-name>frame4</object-name>
+  <object-name>level4</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[3]</property>
+    <value>330 Gal Droptank</value>
+   </equals>
+  </condition>
+ </animation>
+  
+  <animation>
+   <type>material</type>
+    <object-name>gear</object-name>
+    <condition>
+      <less-than>
+      <property>gear/gear[0]/position-norm</property>
+      <value>1</value>
+    </less-than>
+    </condition>
+    <emission>
+			<red>1</red>
+			<green>0</green>
+			<blue>0</blue>
+		</emission>
+	  <diffuse>
+      <red>1</red>
+			<green>0</green>
+			<blue>0</blue>
+      </diffuse>
+    </animation>
+    
+    <animation>
+   <type>material</type>
+    <object-name>gear</object-name>
+    <condition>
+      <property>gear/gear[0]/position-norm</property>
+    </condition>
+    <emission>
+			<red>0</red>
+			<green>1</green>
+			<blue>0</blue>
+		</emission>
+	  <diffuse>
+      <red>0</red>
+			<green>1</green>
+			<blue>0</blue>
+      </diffuse>
+    </animation>
+    
+    <animation>
+      <type>select</type>
+      <object-name>wb</object-name>
+      <condition>
+      <property>/controls/gear/brake-parking</property>
+      </condition>
+    </animation>
+    
+    <animation>
+      <type>select</type>
+      <object-name>abk</object-name>
+      <condition>
+      <property>/controls/flight/speedbrake</property>
+      </condition>
+    </animation>
+  
+	<animation>
+		<type>range</type>
+		<min-m>0</min-m>
+		<max-m>5</max-m>
+	</animation>
+	
+</PropertyList>

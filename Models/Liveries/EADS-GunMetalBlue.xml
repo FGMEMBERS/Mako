@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<sim>
+	<model>
+		<livery>
+			<name type="string">EADS - GunMetal Blue Demonstrator</name>
+			<texture>Liveries/EADS-GunMetalBlue.png</texture>
+		</livery>
+		<livery-logo>
+			<texture>Liveries/EADS-GunMetalBlue.png</texture>
+		</livery-logo>
+	</model>
+</sim>
+
+</PropertyList>

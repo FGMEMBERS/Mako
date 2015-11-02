@@ -1,0 +1,199 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<!--
+  EADS Mako multiplayer back seat view.
+
+  Copyright (C) 2009  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<!--
+  Usage: fgfs - -prop:/sim/remote/pilot-callsign="remote pilot callsign" - -aircraft=Fi-156-passenger
+-->
+<PropertyList>
+
+ <sim>
+
+  <description>EADS Mako Back Seat(YASIM)</description>
+  <author>Mathias Froehlich, Algernon</author>
+  <status>vAlpha 0.9</status>
+  <aircraft-version>$Id$</aircraft-version>
+  
+  <flight-model>null</flight-model>
+
+  <presets>
+   <onground type="bool">false</onground>
+   <altitude-agl-ft type="double">30.0</altitude-agl-ft>
+  </presets>
+
+  <!-- 3d model -->
+  <model>
+   <path>/Models/Mako-BackSeat.xml</path>
+  </model>
+
+  <!-- Views -->
+  
+  <view n="0">
+   <internal archive="y">true</internal>
+   <config>
+   <x-offset-m archive="y">0</x-offset-m>
+      <y-offset-m archive="y">1</y-offset-m>
+      <z-offset-m archive="y">-2.55</z-offset-m>
+    <pitch-offset-deg>0</pitch-offset-deg>
+    <default-field-of-view-deg type="double">120.0</default-field-of-view-deg>
+   </config>
+  </view>
+  
+  
+  
+ 
+
+ 
+  <chase-distance-m type="double">-18.0</chase-distance-m>
+
+   <sound>
+    <path>Aircraft/Mako/Sounds/Sound.xml</path>
+  </sound>
+		
+
+		
+
+  <!-- Aircraft specific help. -->
+  <!-- help include="help.xml"/ -->
+
+  <!-- systems>
+   <electrical>
+    <path/>
+   </electrical>
+  </systems>
+  <instrumentation>
+   <path/>
+  </instrumentation -->
+
+  <menubar>
+   <default>
+    <menu n="100">
+     <label>Mako</label>
+     <item>
+      <label>Select Pilot</label>
+      <binding>
+       <command>nasal</command>
+       <script>
+        dual_control_tools.
+          copilot_dialog.show(aircraft_dual_control.pilot_type);
+       </script>
+      </binding>
+     </item>
+    </menu>
+   </default>
+  </menubar>
+
+ </sim>
+ 
+ <instrumentation>
+    <magnetic-compass>
+       <bookmark-heading-deg type="double">43.0</bookmark-heading-deg>
+    </magnetic-compass>
+    
+    <enav><selected type="int">3</selected></enav>
+    
+    <radar>
+      <range type="int" archive="y">20</range>
+      <minimized type="bool" archive="y">false</minimized>
+      <selected type="int">3</selected>
+      <!-- inicio en pruebas -->
+      <enabled type="bool">true</enabled>
+      <az-field type="double">120</az-field>
+      <range type="double">150</range>
+      <range-selected type="double">50</range-selected>
+      <radar2-range type="double">150</radar2-range>
+      <display-rdr type="bool">true</display-rdr>
+      <radar-standby type="int">3</radar-standby>
+      <mode>
+        <rws type="bool">true</rws>
+        <tws-auto type="bool">false</tws-auto>
+      </mode>
+    </radar>
+    
+    <efis>
+      <ecam>
+					<display-mode type="string">FUEL</display-mode>
+			</ecam>
+			<nd>
+					<display-mode type="string">VOR</display-mode>
+					<display-mode-knob type="int">2</display-mode-knob>
+					<display-range type="int">60</display-range>
+				
+			</nd>
+			<input>
+				<vor-adf-1 type="int">1</vor-adf-1>
+				<vor-adf-2 type="int">1</vor-adf-2>
+				<CSTR type="bool">1</CSTR>
+				<WPT type="bool">1</WPT>
+				<VORD type="bool">1</VORD>
+				<NDB type="bool">1</NDB>
+				<ARPT type="bool">1</ARPT>
+				<WX type="bool">1</WX>
+				<TERR type="bool">1</TERR>
+				<TRAF type="bool">1</TRAF>
+				<taxi type="bool">1</taxi>
+			</input>
+
+		
+		</efis>
+ </instrumentation>
+
+ <nasal>
+ <mako>
+			<file>Aircraft/Mako/Nasal/hud.nas</file>
+			<file>Aircraft/Mako/Nasal/liveries.nas</file>
+			<file>Aircraft/Mako/Nasal/doors.nas</file>
+			<file>Aircraft/Mako/Nasal/payload.nas</file>
+		</mako>
+		
+		<enav>
+       <file>Aircraft/Mako/Nasal/enav.nas</file>
+    </enav>
+		
+	  <terrain-map>
+      <file>Aircraft/Mako/Nasal/terrain-map.nas</file>
+    </terrain-map>
+    
+    <radar>
+      <file>Aircraft/Mako/Nasal/radar.nas</file> 
+    </radar>
+
+    <radar2>
+     <file>Aircraft/Mako/Nasal/radar2.nas</file>
+    </radar2> 
+    <light>
+      <file>Aircraft/Mako/Nasal/light.nas</file>
+    </light>
+	
+		
+		<engines>
+   <file>Aircraft/Mako/Nasal/generic-yasim-engine.nas</file>
+  </engines>
+	
+	<emu>
+   <file>Aircraft/Mako/Nasal/emu.nas</file>
+  </emu>
+  
+   <load>
+      <file>Aircraft/Mako/Nasal/ext_stores.nas</file>
+    </load>
+	
+
+
+  <dual_control_tools>
+   <file>Aircraft/Generic/DualControl/dual-control-tools.nas</file>
+  </dual_control_tools>
+  <aircraft_dual_control>
+   <file>Aircraft/Mako/Nasal/mako-dual-control.nas</file>
+  </aircraft_dual_control>
+  <dual_control>
+   <file>Aircraft/Generic/DualControl/copilot-dual-control.nas</file>
+  </dual_control>
+  
+ </nasal>
+
+</PropertyList>

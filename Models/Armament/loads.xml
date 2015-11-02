@@ -1,0 +1,1372 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<animation>
+        <type>range</type>
+        <min-m>0</min-m>
+        <max-m>400</max-m>
+    </animation>
+
+	
+		<model>
+	<name>left_tip.aim9</name>
+	 <path>Aircraft/Mako/Models/Armament/aim-9/aim-9.xml</path>
+	 <offsets>
+			<x-m>9</x-m>
+			<y-m>-4.19</y-m>
+			<z-m>1.98</z-m>
+		  <roll-deg>45</roll-deg>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>left_tip.aim9</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[0]</property>
+    <value>AIM-9 Sidewinder</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>left_tip.asraam</name>
+	 <path>Aircraft/Mako/Models/Armament/aim132/AIM132.xml</path>
+	 <offsets>
+			<x-m>9</x-m>
+			<y-m>-4.19</y-m>
+			<z-m>1.98</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>left_tip.asraam</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[0]</property>
+    <value>AIM-132 ASRAAM</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>left_tip.mica</name>
+	 <path>Aircraft/Mako/Models/Armament/MatraMica/MatraMica.xml</path>
+	 <offsets>
+			<x-m>9</x-m>
+			<y-m>-4.19</y-m>
+			<z-m>1.98</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>left_tip.mica</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[0]</property>
+    <value>MICA</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>left_tip.iris</name>
+	 <path>Aircraft/Mako/Models/Armament/iris-t/iris-t.xml</path>
+	 <offsets>
+			<x-m>9.35</x-m>
+			<y-m>-4.19</y-m>
+			<z-m>1.98</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>left_tip.iris</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[0]</property>
+    <value>IRIS-T</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>left.missiletrain</object-name>  
+  <condition>
+  <or>
+   <equals>
+    <property>sim/multiplay/generic/string[0]</property>
+    <value>MICA</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[0]</property>
+    <value>IRIS-T</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[0]</property>
+    <value>AIM-9 Sidewinder</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[0]</property>
+    <value>AIM-132 ASRAAM</value>
+   </equals>
+  </or>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>left_out.aim9</name>
+	 <path>Aircraft/Mako/Models/Armament/aim-9/aim-9.xml</path>
+	 <offsets>
+			<x-m>8.45</x-m>
+			<y-m>-3.00</y-m>
+			<z-m>1.65</z-m>
+		  <roll-deg>45</roll-deg>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>left_out.aim9</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[1]</property>
+    <value>AIM-9 Sidewinder</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>left_out.asraam</name>
+	 <path>Aircraft/Mako/Models/Armament/aim132/AIM132.xml</path>
+	 <offsets>
+			<x-m>8.55</x-m>
+			<y-m>-3.00</y-m>
+			<z-m>1.65</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>left_out.asraam</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[1]</property>
+    <value>AIM-132 ASRAAM</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>left_out.mica</name>
+	 <path>Aircraft/Mako/Models/Armament/MatraMica/MatraMica.xml</path>
+	 <offsets>
+			<x-m>8.45</x-m>
+			<y-m>-3.00</y-m>
+			<z-m>1.65</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>left_out.mica</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[1]</property>
+    <value>MICA</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>left_out.iris</name>
+	 <path>Aircraft/Mako/Models/Armament/iris-t/iris-t.xml</path>
+	 <offsets>
+			<x-m>8.90</x-m>
+			<y-m>-3.00</y-m>
+			<z-m>1.65</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>left_out.iris</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[1]</property>
+    <value>IRIS-T</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>left_out.meteor</name>
+	 <path>Aircraft/Mako/Models/Armament/Meteor/meteor.xml</path>
+	 <offsets>
+			<x-m>8.25</x-m>
+			<y-m>-3.00</y-m>
+			<z-m>1.65</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>left_out.meteor</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[1]</property>
+    <value>Meteor</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>GBU-16_left_out</name>
+	 <path>Aircraft/Mako/Models/Armament/GBU/gbu16.xml</path>
+	 <offsets>
+			<x-m>8.55</x-m>
+			<y-m>-3.00</y-m>
+			<z-m>1.55</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>GBU-16_left_out</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[1]</property>
+    <value>GBU-16</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>AGM-65_left_out</name>
+	 <path>Aircraft/Mako/Models/Armament/agm65/AGM-65.xml</path>
+	 <offsets>
+			<x-m>8.95</x-m>
+			<y-m>-3.00</y-m>
+			<z-m>1.55</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>AGM-65_left_out</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[1]</property>
+    <value>AGM-65 Maverick</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>left.pilon1</object-name>  
+  <condition>
+  <or>
+   <equals>
+    <property>sim/multiplay/generic/string[1]</property>
+    <value>AIM-9 Sidewinder</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[1]</property>
+    <value>AIM-132 ASRAAM</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[1]</property>
+    <value>MICA</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[1]</property>
+    <value>Meteor</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[1]</property>
+    <value>IRIS-T</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[1]</property>
+    <value>AIM-120 Slammer</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[1]</property>
+    <value>GBU-16</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[1]</property>
+    <value>AGM-65 Maverick</value>
+   </equals>
+   </or>
+  </condition>
+ </animation>
+ 
+ 
+ <model>
+	<name>left_tank</name>
+	 <path>Aircraft/Mako/Models/Armament/tanks/tank330.xml</path>
+	  <offsets>
+			<x-m>0.4</x-m>
+			<y-m>-2.012</y-m>
+			<z-m>0.855</z-m>
+		  <roll-deg>0</roll-deg>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>left_tank</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[2]</property>
+    <value>330 Gal Droptank</value>
+   </equals>
+  </condition>
+ </animation>
+
+	
+	<model>
+	<name>left_in.aim9</name>
+	 <path>Aircraft/Mako/Models/Armament/aim-9/aim-9.xml</path>
+	 <offsets>
+			<x-m>7.67</x-m>
+			<y-m>-2.012</y-m>
+			<z-m>1.65</z-m>
+		  <roll-deg>45</roll-deg>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>left_in.aim9</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[2]</property>
+    <value>AIM-9 Sidewinder</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>left_in.agm84</name>
+	 <path>Aircraft/Mako/Models/Armament/agm84/AGM-84.xml</path>
+	 <offsets>
+			<x-m>7.67</x-m>
+			<y-m>-2.012</y-m>
+			<z-m>1.55</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>left_in.agm84</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[2]</property>
+    <value>AGM-84 Harpoon</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>left_in.seaeagle</name>
+	 <path>Aircraft/Mako/Models/Armament/SeaEagle/seaeagle.xml</path>
+	 <offsets>
+			<x-m>7.87</x-m>
+			<y-m>-2.012</y-m>
+			<z-m>1.55</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>left_in.seaeagle</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[2]</property>
+    <value>Sea Eagle</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>left_in.asraam</name>
+	 <path>Aircraft/Mako/Models/Armament/aim132/AIM132.xml</path>
+	 <offsets>
+			<x-m>7.67</x-m>
+			<y-m>-2.012</y-m>
+			<z-m>1.65</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>left_in.asraam</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[2]</property>
+    <value>AIM-132 ASRAAM</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>left_in.mica</name>
+	 <path>Aircraft/Mako/Models/Armament/MatraMica/MatraMica.xml</path>
+	 <offsets>
+			<x-m>7.67</x-m>
+			<y-m>-2.012</y-m>
+			<z-m>1.65</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>left_in.mica</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[2]</property>
+    <value>MICA</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>left_in.iris</name>
+	 <path>Aircraft/Mako/Models/Armament/iris-t/iris-t.xml</path>
+	 <offsets>
+			<x-m>8.02</x-m>
+			<y-m>-2.012</y-m>
+			<z-m>1.65</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>left_in.iris</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[2]</property>
+    <value>IRIS-T</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>left_in.meteor</name>
+	 <path>Aircraft/Mako/Models/Armament/Meteor/meteor.xml</path>
+	 <offsets>
+			<x-m>7.57</x-m>
+			<y-m>-2.012</y-m>
+			<z-m>1.65</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>left_in.meteor</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[2]</property>
+    <value>Meteor</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>GBU-16_left_in</name>
+	 <path>Aircraft/Mako/Models/Armament/GBU/gbu16.xml</path>
+	 <offsets>
+			<x-m>7.57</x-m>
+			<y-m>-2.012</y-m>
+			<z-m>1.55</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>GBU-16_left_in</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[2]</property>
+    <value>GBU-16</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>AGM-65_left_in</name>
+	 <path>Aircraft/Mako/Models/Armament/agm65/AGM-65.xml</path>
+	 <offsets>
+			<x-m>8.07</x-m>
+			<y-m>-2.012</y-m>
+			<z-m>1.55</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>AGM-65_left_in</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[2]</property>
+    <value>AGM-65 Maverick</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>GBU-24_left_in</name>
+	 <path>Aircraft/Mako/Models/Armament/GBU/gbu24.xml</path>
+	 <offsets>
+			<x-m>7.57</x-m>
+			<y-m>-2.012</y-m>
+			<z-m>1.55</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>GBU-24_left_in</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[2]</property>
+    <value>GBU-24</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>left.pilon0</object-name>  
+  <condition>
+  <or>
+  <equals>
+    <property>sim/multiplay/generic/string[2]</property>
+    <value>330 Gal Droptank</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[2]</property>
+    <value>AIM-9 Sidewinder</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[2]</property>
+    <value>AGM-84 Harpoon</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[2]</property>
+    <value>Sea Eagle</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[2]</property>
+    <value>AIM-132 ASRAAM</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[2]</property>
+    <value>MICA</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[2]</property>
+    <value>IRIS-T</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[2]</property>
+    <value>Meteor</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[2]</property>
+    <value>AIM-120 Slammer</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[2]</property>
+    <value>GBU-16</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[2]</property>
+    <value>GBU-24</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[2]</property>
+    <value>AGM-65 Maverick</value>
+   </equals>
+   </or>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>right_tip.aim9</name>
+	 <path>Aircraft/Mako/Models/Armament/aim-9/aim-9.xml</path>
+	 <offsets>
+			<x-m>9</x-m>
+			<y-m>4.19</y-m>
+			<z-m>1.98</z-m>
+		  <roll-deg>45</roll-deg>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>right_tip.aim9</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[6]</property>
+    <value>AIM-9 Sidewinder</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>right_tip.asraam</name>
+	 <path>Aircraft/Mako/Models/Armament/aim132/AIM132.xml</path>
+	 <offsets>
+			<x-m>9</x-m>
+			<y-m>4.19</y-m>
+			<z-m>1.98</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>right_tip.asraam</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[6]</property>
+    <value>AIM-132 ASRAAM</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>right_tip.mica</name>
+	 <path>Aircraft/Mako/Models/Armament/MatraMica/MatraMica.xml</path>
+	 <offsets>
+			<x-m>9</x-m>
+			<y-m>4.19</y-m>
+			<z-m>1.98</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>right_tip.mica</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[6]</property>
+    <value>MICA</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>right_tip.iris</name>
+	 <path>Aircraft/Mako/Models/Armament/iris-t/iris-t.xml</path>
+	 <offsets>
+			<x-m>9.35</x-m>
+			<y-m>4.19</y-m>
+			<z-m>1.98</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>right_tip.iris</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[6]</property>
+    <value>IRIS-T</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>right.missiletrain</object-name>  
+  <condition>
+  <or>
+   <equals>
+    <property>sim/multiplay/generic/string[6]</property>
+    <value>MICA</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[6]</property>
+    <value>IRIS-T</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[6]</property>
+    <value>AIM-9 Sidewinder</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[6]</property>
+    <value>AIM-132 ASRAAM</value>
+   </equals>
+  </or>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>right_out.aim9</name>
+	 <path>Aircraft/Mako/Models/Armament/aim-9/aim-9.xml</path>
+	 <offsets>
+			<x-m>8.45</x-m>
+			<y-m>3.00</y-m>
+			<z-m>1.65</z-m>
+		  <roll-deg>45</roll-deg>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>right_out.aim9</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[5]</property>
+    <value>AIM-9 Sidewinder</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>right_out.asraam</name>
+	 <path>Aircraft/Mako/Models/Armament/aim132/AIM132.xml</path>
+	 <offsets>
+			<x-m>8.55</x-m>
+			<y-m>3.00</y-m>
+			<z-m>1.65</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>right_out.asraam</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[5]</property>
+    <value>AIM-132 ASRAAM</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>right_out.mica</name>
+	 <path>Aircraft/Mako/Models/Armament/MatraMica/MatraMica.xml</path>
+	 <offsets>
+			<x-m>8.45</x-m>
+			<y-m>3.00</y-m>
+			<z-m>1.65</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>right_out.mica</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[5]</property>
+    <value>MICA</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>right_out.iris</name>
+	 <path>Aircraft/Mako/Models/Armament/iris-t/iris-t.xml</path>
+	 <offsets>
+			<x-m>8.90</x-m>
+			<y-m>3.00</y-m>
+			<z-m>1.65</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>right_out.iris</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[5]</property>
+    <value>IRIS-T</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>right_out.meteor</name>
+	 <path>Aircraft/Mako/Models/Armament/Meteor/meteor.xml</path>
+	 <offsets>
+			<x-m>8.25</x-m>
+			<y-m>3.00</y-m>
+			<z-m>1.65</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>right_out.meteor</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[5]</property>
+    <value>Meteor</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>GBU-16_right_out</name>
+	 <path>Aircraft/Mako/Models/Armament/GBU/gbu16.xml</path>
+	 <offsets>
+			<x-m>8.55</x-m>
+			<y-m>3.00</y-m>
+			<z-m>1.55</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>GBU-16_right_out</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[5]</property>
+    <value>GBU-16</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>AGM-65_right_out</name>
+	 <path>Aircraft/Mako/Models/Armament/agm65/AGM-65.xml</path>
+	 <offsets>
+			<x-m>8.95</x-m>
+			<y-m>3.00</y-m>
+			<z-m>1.55</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>AGM-65_right_out</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[5]</property>
+    <value>AGM-65 Maverick</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>right.pilon1</object-name>  
+  <condition>
+  <or>
+   <equals>
+    <property>sim/multiplay/generic/string[5]</property>
+    <value>AIM-9 Sidewinder</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[5]</property>
+    <value>AIM-132 ASRAAM</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[5]</property>
+    <value>MICA</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[5]</property>
+    <value>Meteor</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[5]</property>
+    <value>IRIS-T</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[5]</property>
+    <value>AIM-120 Slammer</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[5]</property>
+    <value>GBU-16</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[5]</property>
+    <value>AGM-65 Maverick</value>
+   </equals>
+   </or>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>right_in.aim9</name>
+	 <path>Aircraft/Mako/Models/Armament/aim-9/aim-9.xml</path>
+	 <offsets>
+			<x-m>7.67</x-m>
+			<y-m>2.012</y-m>
+			<z-m>1.65</z-m>
+		  <roll-deg>45</roll-deg>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>right_in.aim9</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[4]</property>
+    <value>AIM-9 Sidewinder</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>right_in.agm84</name>
+	 <path>Aircraft/Mako/Models/Armament/agm84/AGM-84.xml</path>
+	 <offsets>
+			<x-m>7.67</x-m>
+			<y-m>2.012</y-m>
+			<z-m>1.55</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>right_in.agm84</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[4]</property>
+    <value>AGM-84 Harpoon</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>right_in.seaeagle</name>
+	 <path>Aircraft/Mako/Models/Armament/SeaEagle/seaeagle.xml</path>
+	 <offsets>
+			<x-m>7.87</x-m>
+			<y-m>2.012</y-m>
+			<z-m>1.55</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>right_in.seaeagle</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[4]</property>
+    <value>Sea Eagle</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>right_in.asraam</name>
+	 <path>Aircraft/Mako/Models/Armament/aim132/AIM132.xml</path>
+	 <offsets>
+			<x-m>7.67</x-m>
+			<y-m>2.012</y-m>
+			<z-m>1.65</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>right_in.asraam</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[4]</property>
+    <value>AIM-132 ASRAAM</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>right_in.mica</name>
+	 <path>Aircraft/Mako/Models/Armament/MatraMica/MatraMica.xml</path>
+	 <offsets>
+			<x-m>7.67</x-m>
+			<y-m>2.012</y-m>
+			<z-m>1.65</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>right_in.mica</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[4]</property>
+    <value>MICA</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>right_in.iris</name>
+	 <path>Aircraft/Mako/Models/Armament/iris-t/iris-t.xml</path>
+	 <offsets>
+			<x-m>8.02</x-m>
+			<y-m>2.012</y-m>
+			<z-m>1.65</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>right_in.iris</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[4]</property>
+    <value>IRIS-T</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>right_in.meteor</name>
+	 <path>Aircraft/Mako/Models/Armament/Meteor/meteor.xml</path>
+	 <offsets>
+			<x-m>7.57</x-m>
+			<y-m>2.012</y-m>
+			<z-m>1.65</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>right_in.meteor</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[4]</property>
+    <value>Meteor</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>GBU-16_right_in</name>
+	 <path>Aircraft/Mako/Models/Armament/GBU/gbu16.xml</path>
+	 <offsets>
+			<x-m>7.67</x-m>
+			<y-m>2.012</y-m>
+			<z-m>1.55</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>GBU-16_right_in</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[4]</property>
+    <value>GBU-16</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>AGM-65_right_in</name>
+	 <path>Aircraft/Mako/Models/Armament/agm65/AGM-65.xml</path>
+	 <offsets>
+			<x-m>8.07</x-m>
+			<y-m>2.012</y-m>
+			<z-m>1.55</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>AGM-65_right_in</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[4]</property>
+    <value>AGM-65 Maverick</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>GBU-24_right_in</name>
+	 <path>Aircraft/Mako/Models/Armament/GBU/gbu24.xml</path>
+	 <offsets>
+			<x-m>7.57</x-m>
+			<y-m>2.012</y-m>
+			<z-m>1.55</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>GBU-24_right_in</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[4]</property>
+    <value>GBU-24</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+  <model>
+	<name>right_tank</name>
+	 <path>Aircraft/Mako/Models/Armament/tanks/tank330.xml</path>
+	  <offsets>
+			<x-m>0.4</x-m>
+			<y-m>2.012</y-m>
+			<z-m>0.855</z-m>
+		  <roll-deg>0</roll-deg>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>right_tank</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[2]</property>
+    <value>330 Gal Droptank</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+
+ <animation>
+  <type>select</type>
+  <object-name>right.pilon0</object-name>  
+  <condition>
+  <or>
+   <equals>
+    <property>sim/multiplay/generic/string[4]</property>
+    <value>330 Gal Droptank</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[4]</property>
+    <value>AIM-9 Sidewinder</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[4]</property>
+    <value>AGM-84 Harpoon</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[4]</property>
+    <value>Sea Eagle</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[4]</property>
+    <value>AIM-132 ASRAAM</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[4]</property>
+    <value>MICA</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[4]</property>
+    <value>Meteor</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[4]</property>
+    <value>IRIS-T</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[4]</property>
+    <value>AIM-120 Slammer</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[4]</property>
+    <value>GBU-16</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[4]</property>
+    <value>AGM-65 Maverick</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[4]</property>
+    <value>GBU-24</value>
+   </equals>
+   </or>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>right_out.aim120</name>
+	 <path>Aircraft/Mako/Models/Armament/AIM-120/AIM-120C5.xml</path>
+	 <offsets>
+			<x-m>7.95</x-m>
+			<y-m>3.00</y-m>
+			<z-m>1.65</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>right_out.aim120</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[5]</property>
+    <value>AIM-120 Slammer</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>right_in.aim120</name>
+	 <path>Aircraft/Mako/Models/Armament/AIM-120/AIM-120C5.xml</path>
+	 <offsets>
+			<x-m>7.07</x-m>
+			<y-m>2.012</y-m>
+			<z-m>1.65</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>right_in.aim120</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[4]</property>
+    <value>AIM-120 Slammer</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>left_out.aim120</name>
+	 <path>Aircraft/Mako/Models/Armament/AIM-120/AIM-120C5.xml</path>
+	 <offsets>
+			<x-m>7.95</x-m>
+			<y-m>-3.00</y-m>
+			<z-m>1.65</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>left_out.aim120</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[1]</property>
+    <value>AIM-120 Slammer</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>left_in.aim120</name>
+	 <path>Aircraft/Mako/Models/Armament/AIM-120/AIM-120C5.xml</path>
+	 <offsets>
+			<x-m>7.07</x-m>
+			<y-m>-2.012</y-m>
+			<z-m>1.65</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>left_in.aim120</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[2]</property>
+    <value>AIM-120 Slammer</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>center_tank</name>
+	 <path>Aircraft/Mako/Models/Armament/tanks/tank330.xml</path>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>center_tank</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[3]</property>
+    <value>330 Gal Droptank</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>GBU-24_center</name>
+	 <path>Aircraft/Mako/Models/Armament/GBU/gbu24.xml</path>
+	 <offsets>
+			<x-m>7.27</x-m>
+			<y-m>0</y-m>
+			<z-m>0.71</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>GBU-24_center</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[3]</property>
+    <value>GBU-24</value>
+   </equals>
+  </condition>
+ </animation>
+	
+	<model>
+	<name>AGM-65_center</name>
+	 <path>Aircraft/Mako/Models/Armament/agm65/AGM-65.xml</path>
+	 <offsets>
+			<x-m>7.97</x-m>
+			<y-m>0</y-m>
+			<z-m>0.71</z-m>
+	 </offsets>
+	</model>
+
+ <animation>
+  <type>select</type>
+  <object-name>AGM-65_center</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[3]</property>
+    <value>AGM-65 Maverick</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>center.pilon</object-name>  
+  <condition>
+  <or>
+   <equals>
+    <property>sim/multiplay/generic/string[3]</property>
+    <value>330 Gal Droptank</value>
+   </equals>
+   <equals>
+    <property>sim/multiplay/generic/string[3]</property>
+    <value>GBU-24</value>
+   </equals>
+   </or>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>shortcenterpylon</object-name>  
+  <condition>
+   <equals>
+    <property>sim/multiplay/generic/string[3]</property>
+    <value>AGM-65 Maverick</value>
+   </equals>
+  </condition>
+ </animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>afterburner</object-name>
+		<condition>
+			<property>/engines/engine[0]/afterburner</property>
+		</condition>
+	</animation>
+
+	
+</PropertyList>

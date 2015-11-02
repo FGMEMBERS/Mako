@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+<path>pilots.ac</path>
+
+ 
+<animation>
+        <type>range</type>
+        <min-m>75</min-m>
+        <max-m>500</max-m>
+    </animation>
+
+	
+
+	
+	
+</PropertyList>
+

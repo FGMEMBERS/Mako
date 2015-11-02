@@ -1,0 +1,311 @@
+<?xml version="1.0"?>
+<PropertyList>
+	<path>repeater.ac</path>
+	
+	<animation>
+		<name>Green05</name>
+		<type>material</type>
+		<object-name>GS</object-name>
+		<object-name>ALT</object-name>
+		<object-name>ADF-a</object-name>
+		<object-name>ADF-s</object-name>
+		<object-name>radio-a</object-name>
+		<object-name>radio-s</object-name>
+		<object-name>mach</object-name>
+		<object-name>G</object-name>
+		<object-name>selectedweapon</object-name>
+		<emission>
+			<red>0</red>
+			<green>1</green>
+			<blue>0</blue>
+		<factor>0.5</factor>
+		</emission>
+		<diffuse>
+			<red>0</red>
+			<green>1</green>
+			<blue>0</blue>
+		<factor>0.5</factor>
+		</diffuse>
+	</animation>
+	
+	<animation>
+		<name>Green1</name>
+		<type>material</type>
+	  <object-name>up.ind</object-name>
+		<object-name>side.ind</object-name>
+		<object-name>up</object-name>
+		<object-name>side</object-name>
+		<emission>
+			<red>0</red>
+			<green>1</green>
+			<blue>0</blue>
+		<factor>1</factor>
+		</emission>
+		<diffuse>
+			<red>0</red>
+			<green>1</green>
+			<blue>0</blue>
+		<factor>1</factor>
+		</diffuse>
+	</animation>
+	
+		<animation>
+   <type>texmultiple</type>
+   <object-name>ai</object-name>
+   <transform>
+     <property>/orientation/pitch-deg</property>
+     <subtype>textranslate</subtype>
+     <factor>0.00314</factor>
+     <axis>
+       <x>0</x>
+       <y>1</y>
+       <z>0</z>
+     </axis>
+   </transform>
+   <transform>
+     <property>/orientation/roll-deg</property>
+     <subtype>texrotate</subtype>
+     <center>
+       <x>0.25</x>
+       <y>0.50</y>
+     </center>
+     <axis>
+       <x>0</x>
+       <y>0</y>
+       <z>-1</z>
+     </axis>
+   </transform>
+ </animation>
+ 
+<text>
+		<name>GS</name>
+		<offsets>
+			<x-m>0.002</x-m>
+			<y-m>-0.075</y-m>
+			<z-m>0.05</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">GS %3.0f KT</format>
+		<property>velocities/groundspeed-kt</property>
+		<draw-boundingbox type="bool">true</draw-boundingbox>
+		<font>typewrighter.txf</font>
+		<character-size>0.007</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	
+	<text>
+		<name>ALT</name>
+		<offsets>
+			<x-m>0.002</x-m>
+			<y-m>0.075</y-m>
+			<z-m>0.05</z-m>
+		</offsets>
+		<alignment>right-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">%4.0f ft</format>
+		<property>/position/altitude-ft</property>
+		<draw-boundingbox type="bool">true</draw-boundingbox>
+		<font>typewrighter.txf</font>
+		<character-size>0.007</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	
+	<text>
+		<name>ADF-a</name>
+		<offsets>
+			<x-m>0.002</x-m>
+			<y-m>0.075</y-m>
+			<z-m>-0.04</z-m>
+		</offsets>
+		<alignment>right-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">adf: act %3.0f Khz</format>
+		<property>instrumentation/adf/frequencies/selected-khz</property>
+		<draw-boundingbox type="bool">true</draw-boundingbox>
+		<font>typewrighter.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	
+	<text>
+		<name>ADF-s</name>
+		<offsets>
+			<x-m>0.002</x-m>
+			<y-m>0.075</y-m>
+			<z-m>-0.05</z-m>
+		</offsets>
+		<alignment>right-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">adf: stb %3.0f Khz</format>
+		<property>instrumentation/adf/frequencies/standby-khz</property>
+		<draw-boundingbox type="bool">true</draw-boundingbox>
+		<font>typewrighter.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	
+	<text>
+		<name>radio-a</name>
+		<offsets>
+			<x-m>0.002</x-m>
+			<y-m>-0.075</y-m>
+			<z-m>-0.04</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">com: act %3.1f Mhz</format>
+		<property>instrumentation/comm/frequencies/selected-mhz</property>
+		<draw-boundingbox type="bool">true</draw-boundingbox>
+		<font>typewrighter.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	
+	<text>
+		<name>radio-s</name>
+		<offsets>
+			<x-m>0.002</x-m>
+			<y-m>-0.075</y-m>
+			<z-m>-0.05</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">com: stb %3.1f Mhz</format>
+		<property>instrumentation/comm/frequencies/standby-mhz</property>
+		<draw-boundingbox type="bool">true</draw-boundingbox>
+		<font>typewrighter.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	
+	<text>
+		<name>mach</name>
+		<offsets>
+			<x-m>0.002</x-m>
+			<y-m>-0.075</y-m>
+			<z-m>0.03</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">M%4.1f</format>
+		<property>/velocities/mach</property>
+		<draw-boundingbox type="bool">true</draw-boundingbox>
+		<font>typewrighter.txf</font>
+		<character-size>0.007</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	
+	<text>
+		<name>G</name>
+		<offsets>
+			<x-m>0.002</x-m>
+			<y-m>-0.075</y-m>
+			<z-m>0.01</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">G%2.1f</format>
+		<property>/accelerations/pilot-g</property>
+    <draw-boundingbox type="bool">true</draw-boundingbox>
+		<font>typewrighter.txf</font>
+		<character-size>0.007</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	
+	 <text>
+	    <name>selectedweapon</name>
+	    <character-size type="double">0.007</character-size>
+	    <offsets>
+			<x-m>0.002</x-m>
+			<y-m>-0.075</y-m>
+			<z-m>-0.03</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+	    <axis-alignment>yz-plane</axis-alignment>
+	    <type type="string">text-value</type>
+
+	    <truncate type="bool">true</truncate>
+	    <property>sim/weaponmode/selectedpylon/general_mfd_msg</property>
+	    <draw-text type="bool">true</draw-text>
+	    <alignment>left-top</alignment>
+
+	    <font>typewrighter.txf</font>
+		<character-size>0.007</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	 </text>
+
+	<animation>
+		<type>translate</type>
+		<object-name>up.ind</object-name>
+		<property>controls/flight/elevator</property>
+		<factor>0.025</factor>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+	</animation>
+  
+  <animation>
+		<type>translate</type>
+		<object-name>side.ind</object-name>
+		<property>controls/flight/aileron</property>
+		<factor>0.03</factor>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>range</type>
+		<min-m>0</min-m>
+		<max-m>5</max-m>
+	</animation>
+</PropertyList>

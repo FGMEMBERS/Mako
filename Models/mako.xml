@@ -1,0 +1,757 @@
+<?xml version="1.0"?>
+<PropertyList>
+	<path>mako.ac</path>
+	<offsets>
+	  <pitch-deg>0</pitch-deg>
+		<z-m>0</z-m>
+	</offsets>
+	
+	<!-- MP sound call -->
+  <sound><path>Aircraft/Mako/Sounds/mp-sound.xml</path></sound>
+	
+	<nasal>
+		<load>
+		var livery_update = aircraft.livery_update.new("Aircraft/Mako/Models/Liveries");
+		  <![CDATA[
+var root = cmdarg();
+var rootindex = root.getIndex();
+var mpPath = "/ai/models/multiplayer["~ rootindex ~"]/";
+
+var lightsPath = mpPath~"lightpack/"; #path to the property node, where all internal values are placed
+
+props.globals.initNode(mpPath~"sim/is-MP-Aircraft", 1, "BOOL");
+      
+srand();
+#wherever you want to add randomization of time, use something like:  + rand()*0.05-0.025 (included by default where appropriate)
+
+
+#list of switches for lights - if you don't intend to use some light, assign it nil value instead, like whateverSwitch = nil; and you don't need to care about anything else
+#IMPORTANT: don't put / on the start of the string, it's already included in the mpPath property
+var navSwitch = mpPath~"controls/lighting/nav-lights-switch";
+var beaconSwitch = mpPath~"controls/lighting/beacon-switch";
+var strobeSwitch = mpPath~"controls/lighting/strobe-switch";
+var landingSwitch = mpPath~"controls/lighting/landing-lights-switch";
+var taxiSwitch = mpPath~"controls/lighting/taxi-light-switch";
+var probeSwitch = mpPath~"controls/lighting/probe-light-switch";
+var whiteSwitch = mpPath~"controls/lighting/white-light-switch";
+
+#switch this from 1 to 0 if you want to use advanced cyclical fading animation of the the nav lights instead of being stable on when the switch is on
+navStillOn = 1;
+
+
+#I need to set listener on some MP transferred properties; this doesn't seem to work well sometimes, so I mirror them to the original location on any change
+#This also simplifies work as I can use almost the same code for MP as is the local Nasal. Furthermore, I can use meaningful property names in the model XML files instead of referencing the MP properties. 
+var mpVar = {
+	new: func(propIn, propOut) {
+		var m = { parents: [mpVar] };
+		m.propIn = propIn;
+		m.propOut = propOut;
+		if(propIn==nil or propOut==nil) return m;
+		m.value = getprop(propIn);
+		setprop(propOut, m.value);
+		return m;
+	},
+	check: func {
+		if(me.propIn==nil or me.propOut==nil) return;
+		var newValue = getprop(me.propIn);
+		if(newValue != me.value) {
+			setprop(me.propOut, newValue);
+			me.value = newValue;
+			#print("value of "~me.propOut~" changed: "~newValue);
+		}
+	},
+};
+#init any property copy object needed in this array (anything you need to transfer over MP, but you are using the original paths in your xmls)
+#also used for properties you are using a listener on, or properties which you maybe want to manipulate during the <unload> 
+#if you're just using the pack, change the values according to the MP bindings in the -set.xml file
+#you don't need to delete the entries if the path is nil - it gets skipped automatically and the MP path is just ignored
+var mirrorValues = [
+	mpVar.new(mpPath~"sim/multiplay/generic/int[7]", mpPath~"sim/crashed"),
+	mpVar.new(mpPath~"sim/multiplay/generic/int[0]", navSwitch),
+	mpVar.new(mpPath~"sim/multiplay/generic/int[1]", beaconSwitch),
+	mpVar.new(mpPath~"sim/multiplay/generic/int[1]", strobeSwitch),
+	mpVar.new(mpPath~"sim/multiplay/generic/int[3]", landingSwitch),
+	mpVar.new(mpPath~"sim/multiplay/generic/int[4]", taxiSwitch),
+	mpVar.new(mpPath~"sim/multiplay/generic/int[4]", probeSwitch),
+	mpVar.new(mpPath~"sim/multiplay/generic/int[0]", whiteSwitch),
+];
+#loop at the default MP transfer frequency (10Hz)
+var mirrorTimer = maketimer(0.1, func {
+	foreach(var mir; mirrorValues) {
+		mir.check();
+	}
+});
+mirrorTimer.start();
+
+
+
+#### NAV LIGHTS ####
+
+#class for a periodic fade in/out animation - for flashing, use rather standard aircraft.light.new(), as in Beacon and Strobe section
+var lightCycle = {
+	#constructor
+	new: func(propSwitch, propOut) {
+		m = { parents: [lightCycle] };
+		props.globals.initNode(propOut, 0, "DOUBLE");
+		props.globals.initNode(propSwitch, 1, "BOOL");
+		m.fadeIn = 0.4 + rand()*0.05-0.025; #fade in time
+		m.fadeOut = 0.4 + rand()*0.05-0.025; #fade out time
+		m.stayOn = 1.5 + rand()*0.05-0.025; #stable on period
+		m.stayOff = 1 + rand()*0.05-0.025; #stable off period
+		m.turnOff = 0.12; #fade out time when turned off
+		m.phase = 0; #phase to be run on next timer call: 0 -> fade in, 1 -> stay on, 2 -> fade out, 3 -> stay off
+		m.cycleTimer = maketimer(0.1, func {
+			if(getprop(propSwitch)) {
+				if(m.phase == 0) {
+					interpolate(propOut, 1, m.fadeIn);
+					m.phase = 1;
+					m.cycleTimer.restart(m.fadeIn);
+				}
+				else if(m.phase == 1){
+					m.phase = 2;
+					m.cycleTimer.restart(m.stayOn);
+				}
+				else if(m.phase == 2){
+					interpolate(propOut, 0, m.fadeOut);
+					m.phase = 3;
+					m.cycleTimer.restart(m.fadeOut);
+				}
+				else if(m.phase == 3){
+					m.phase = 0;
+					m.cycleTimer.restart(m.stayOff);
+				}
+			}
+			else {
+				interpolate(propOut, 0, m.turnOff); #kills any currently ongoing interpolation
+				m.phase = 0;
+			}
+		});
+		m.cycleTimer.singleShot = 1;
+		if(propSwitch==nil) {
+			m.listen = nil;
+			return m;
+		}
+		m.listen = setlistener(propSwitch, func{m.cycleTimer.restart(0);}); #handle switch changes
+		m.cycleTimer.restart(0); #start the looping
+		return m;
+	},
+	#destructor
+	del: func {
+		if(me.listen!=nil) removelistener(me.listen);
+		me.cycleTimer.stop();
+	},
+};
+
+#By default, the switch property is initialized to 1 (only if no value is already assigned). Don't change the class implementation! To override this, set the property manually. You don't need to care if any other code already does it for you. 
+var navLights = nil;
+if(!navStillOn) {
+	navLights = lightCycle.new(navSwitch, lightsPath~"nav-lights-intensity");
+	### Uncomment and tune those to customize times ###
+	#navLights.fadeIn = 0.4; #fade in time 
+	#navLights.fadeOut = 0.4; #fade out time
+	#navLights.stayOn = 3 + rand()*0.05-0.025; #stable on period
+	#navLights.stayOff = 0.6; #stable off period
+	#navLights.turnOff = 0.12; #fade out time when turned off
+}
+
+
+### BEACON ###
+var beacon = nil;
+if(beaconSwitch!=nil) {
+	props.globals.initNode(beaconSwitch, 1, "BOOL");
+	beacon = aircraft.light.new(lightsPath~"beacon-state", 
+		[0.0, 1.0 + rand()*0.05-0.025], beaconSwitch);
+}
+	
+	
+### STROBE ###
+var strobe = nil;
+if(strobeSwitch!=nil) {
+	props.globals.initNode(strobeSwitch, 1, "BOOL");
+	strobe = aircraft.light.new(lightsPath~"strobe-state", 
+		[0.0, 0.87 + rand()*0.05-0.025], strobeSwitch);
+}
+
+
+### LIGHT FADING ###
+
+#class for controlling fade in/out behavior - propIn is a control property (handled as a boolean) and propOut is interpolated
+#all light brightness animations in xmls depend on propOut (Rembrandt brightness, material emission, flares transparency, ...)
+var lightFadeInOut = {
+	#constructor
+	new: func(propSwitch, propOut) {
+		m = { parents: [lightFadeInOut] };
+		m.fadeIn = 0.3; #some sane defaults
+		m.fadeOut = 0.4;
+		if(propSwitch==nil) {
+			m.listen = nil;
+			return m;
+		}
+		props.globals.initNode(propSwitch, 1, "BOOL");
+		m.isOn = getprop(propSwitch);
+		props.globals.initNode(propOut, m.isOn, "DOUBLE");
+		m.listen = setlistener(propSwitch, 
+			func {
+				if(m.isOn and !getprop(propSwitch)) {
+					interpolate(propOut, 0, m.fadeOut);
+					m.isOn = 0;
+				}
+				if(!m.isOn and getprop(propSwitch)) {
+					interpolate(propOut, 1, m.fadeIn);
+					m.isOn = 1;
+				}
+			}
+		);
+		return m;
+	},
+	#destructor
+	del: func {
+		if(me.listen!=nil) removelistener(me.listen);
+	},
+};
+
+fadeLanding = lightFadeInOut.new(landingSwitch, lightsPath~"landing-lights-intensity");
+fadeTaxi = lightFadeInOut.new(taxiSwitch, lightsPath~"taxi-light-intensity");
+fadeProbe = lightFadeInOut.new(probeSwitch, lightsPath~"probe-light-intensity");
+fadeWhite = lightFadeInOut.new(whiteSwitch, lightsPath~"white-light-intensity");
+if(navStillOn) {
+	navLights = lightFadeInOut.new(navSwitch, lightsPath~"nav-lights-intensity");
+	navLights.fadeIn = 0.1;
+	navLights.fadeOut = 0.12;
+}
+#manipulate times if defaults don't fit your needs:
+#fadeLanding.fadeIn = 0.5;
+#fadeLanding.fadeOut = 0.8;
+
+
+### the rest of your model load embedded Nasal code ###
+
+    ]]>
+ 
+		</load>
+		<unload>
+		 #prevent multiple timers and listeners from running and fighting on next connect
+      #cleanly destroy MP property mirroring
+      mirrorTimer.stop();
+      mirrorTimer = nil;
+      mirrorValues = nil;
+      
+      #cleanly destroy nav lights
+      if(navStillOn) {
+      	navLights.del();
+      }
+      else {
+      	if(navSwitch!=nil) setprop(navSwitch, 0);
+      	navLights.del();
+      	if(navSwitch!=nil) navLights.cycleTimer = nil;
+      	navLights = nil;
+      }
+      
+      #cleanly destroy beacon
+      if(beaconSwitch!=nil) setprop(beaconSwitch, 0);
+      beacon.del();
+      beacon = nil;
+      
+      #cleanly destroy strobe
+      if(strobeSwitch!=nil) setprop(strobeSwitch, 0);
+      strobe.del();
+      strobe = nil;
+      
+      #cleanly destroy light fade in/out animation objects
+      fadeLanding.del();
+      fadeTaxi.del();
+      fadeProbe.del();
+      fadeWhite.del();
+      
+      ### the rest of your model unload embedded Nasal code ###
+		livery_update.stop();
+		</unload>
+	</nasal>
+
+	<animation>
+		<type>material</type>
+		<property-base>sim/model/livery</property-base>
+		<object-name>fuselage</object-name>
+		<object-name>canopy.frontframe</object-name>
+		<object-name>canopy.backframe</object-name>
+		<object-name>fin</object-name>
+		<object-name>rudder</object-name>
+		<object-name>turbine</object-name>
+		<object-name>left.taileron</object-name>
+		<object-name>right.taileron</object-name>
+		<object-name>left.flaperon</object-name>
+		<object-name>right.flaperon</object-name>
+		<object-name>left.missiletrain</object-name>
+		<object-name>right.missiletrain</object-name>
+		<object-name>left.slat</object-name>
+		<object-name>right.slat</object-name>
+		<object-name>shortcenterpylon</object-name>
+		<object-name>left.pilon0</object-name>
+		<object-name>right.pilon0</object-name>
+		<object-name>left.pilon1</object-name>
+		<object-name>right.pilon1</object-name>
+		<object-name>center.pilon</object-name>
+		<object-name>left.geardoor</object-name>
+		<object-name>right.geardoor</object-name>
+		<object-name>main.geardoorleft</object-name>
+		<object-name>main.geardoorright</object-name>
+		<object-name>spoiler0</object-name>
+		<object-name>spoiler1</object-name>
+		<texture-prop>texture</texture-prop>
+		<texture>Liveries/default.png</texture>
+	</animation>
+	
+	
+		<!-- glass -->
+	<animation>
+    <type>shader</type>
+    <shader>chrome</shader>
+    <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
+   <object-name>canopy.backbubble</object-name>
+    <object-name>canopy.frontbubble1</object-name>
+	 <object-name>canopy.frontbubble0</object-name>
+		
+  </animation>
+	
+	<effect>
+      <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>canopy.backbubble</object-name>
+    <object-name>canopy.frontbubble1</object-name>
+	 <object-name>canopy.frontbubble0</object-name>
+   </effect>
+	
+	
+	
+<model>
+	<name>cockpit</name>
+	 <path>Aircraft/Mako/Models/cockpit.xml</path>
+	 <offsets>
+			<x-m>-7.9</x-m>
+			<y-m>0</y-m>
+			<z-m>-1.7</z-m>
+			<pitch-deg>-0.5</pitch-deg>
+	 </offsets>
+	</model>
+	
+	<model>
+	<name>gear</name>
+	 <path>Aircraft/Mako/Models/gear.xml</path>
+	 <offsets>
+			<x-m>-7.9</x-m>
+			<y-m>0</y-m>
+			<z-m>-1.7</z-m>
+			<pitch-deg>-0.5</pitch-deg>
+	 </offsets>
+	</model>
+	
+	
+	<model>
+	<name>payload</name>
+	 <path>Aircraft/Mako/Models/Armament/loads.xml</path>
+	 <offsets>
+			<x-m>-7.9</x-m>
+			<y-m>0</y-m>
+			<z-m>-1.75</z-m>
+			<pitch-deg>-0.5</pitch-deg>
+	 </offsets>
+	</model>
+	
+<!-- The canopy -->	
+<animation>
+ <type>translate</type>
+ <object-name>canopy.frontframe</object-name>
+ <object-name>canopy.frontbubble0</object-name>
+ <object-name>canopy.frontbubble1</object-name>
+ <property>instrumentation/doors/crew/position-norm</property>
+ <factor>-1.1</factor>
+		<axis>
+			<x>1.0</x>
+			<y>0.0</y>
+			<z>0.0</z>
+		</axis>
+</animation>
+
+<animation>
+ <type>translate</type>
+ <object-name>canopy.backframe</object-name>
+ <object-name>canopy.backbubble</object-name>
+ <property>instrumentation/doors/crew/position-norm</property>
+ <factor>1.1</factor>
+		<axis>
+			<x>1.0</x>
+			<y>0.0</y>
+			<z>0.0</z>
+		</axis>
+</animation>
+
+<animation>
+ <type>translate</type>
+ <object-name>canopy.backframe</object-name>
+ <object-name>canopy.backbubble</object-name>
+ <property>instrumentation/doors/crew/position-norm</property>
+ <factor>0.2</factor>
+		<axis>
+			<x>0.0</x>
+			<y>0.0</y>
+			<z>1.0</z>
+		</axis>
+</animation>
+
+<!-- End of canopy -->
+	
+<!-- The flaperons -->
+
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>left.flaperon</object-name>
+  <property>surface-positions/flap-pos-norm</property>
+  <factor>-20</factor>
+  <axis>
+    <x1-m>1.85</x1-m>
+   <y1-m>-1.2</y1-m>
+   <z1-m>0.3</z1-m>
+   <x2-m>2.2</x2-m>
+   <y2-m>-3.616</y2-m>
+   <z2-m>0.3</z2-m>
+  </axis>
+ </animation>
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>right.flaperon</object-name>
+  <property>surface-positions/flap-pos-norm</property>
+  <factor>20</factor>
+  <axis>
+    <x1-m>1.85</x1-m>
+   <y1-m>1.2</y1-m>
+   <z1-m>0.3</z1-m>
+   <x2-m>2.2</x2-m>
+   <y2-m>3.616</y2-m>
+   <z2-m>0.3</z2-m>
+  </axis>
+ </animation>
+<!-- End of the flaperons -->
+
+<!-- The tailerons -->
+<animation>
+  <type>rotate</type>
+  <object-name>left.taileron</object-name>
+  <property>surface-positions/left-taileron-pos-norm</property>
+  <factor>15</factor>
+  	<center>
+      <x-m>4.5</x-m>
+	  <y-m>-0.95</y-m>
+	  <z-m>0.1</z-m>
+	</center>
+	<axis>
+	<x>0</x>
+	<y>1</y>
+	<z>0</z>
+   </axis>
+ </animation>
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>right.taileron</object-name>
+  <property>surface-positions/right-taileron-pos-norm</property>
+  <factor>15</factor>
+ <center>
+      <x-m>4.5</x-m>
+	  <y-m>0.95</y-m>
+	  <z-m>0.1</z-m>
+	</center>
+	<axis>
+	<x>0</x>
+	<y>1</y>
+	<z>0</z>
+   </axis>
+ </animation>
+ 
+<!-- End of tailerons -->
+
+<animation>
+  <type>rotate</type>
+  <object-name>rudder</object-name>
+  <property>/surface-positions/rudder-pos-norm</property>
+  <factor>-20</factor>
+  <axis>
+   <x1-m>4.3</x1-m>
+   <y1-m>0</y1-m>
+   <z1-m>1.11</z1-m>
+   <x2-m>4.66</x2-m>
+   <y2-m>0</y2-m>
+   <z2-m>2.61</z2-m>
+  </axis>
+ </animation>
+ 
+ <!-- The Spoilers -->
+ 
+ <animation>
+		<type>rotate</type>
+		<object-name>spoiler0</object-name>
+		<property>surface-positions/speedbrake-pos-norm</property>
+		<factor>30</factor>
+		<offset-deg>0</offset-deg>
+		<axis>
+     <x1-m>-0.55</x1-m>
+     <y1-m>-0.245</y1-m>
+     <z1-m>0.94</z1-m>
+     <x2-m>-0.56</x2-m>
+     <y2-m>-0.4667</y2-m>
+     <z2-m>0.58</z2-m>
+    </axis>
+ 	</animation>
+ 	
+ 	<animation>
+		<type>rotate</type>
+		<object-name>spoiler1</object-name>
+		<property>surface-positions/speedbrake-pos-norm</property>
+		<factor>-30</factor>
+		<offset-deg>0</offset-deg>
+		<axis>
+     <x1-m>-0.55</x1-m>
+     <y1-m>0.245</y1-m>
+     <z1-m>0.94</z1-m>
+     <x2-m>-0.56</x2-m>
+     <y2-m>0.4667</y2-m>
+     <z2-m>0.58</z2-m>
+    </axis>
+ 	</animation>
+	
+	<!-- leading edge slats -->
+	
+	<animation>
+	<type>rotate</type>
+		<object-name>left.slat</object-name>
+          <property>surface-positions/slat-pos-norm</property>
+			<factor>25</factor>
+		<axis>
+			<x1-m>-0.47</x1-m>
+			<y1-m>-1.56</y1-m>
+			<z1-m>0.31</z1-m>
+			<x2-m>1.42</x2-m>
+			<y2-m>-3.6</y2-m>
+			<z2-m>0.28</z2-m>
+		</axis>>
+	</animation>
+	
+	<animation>
+	<type>rotate</type>
+		<object-name>right.slat</object-name>
+          <property>surface-positions/slat-pos-norm</property>
+			<factor>-25</factor>
+		<axis>
+			<x1-m>-0.47</x1-m>
+			<y1-m>1.56</y1-m>
+			<z1-m>0.31</z1-m>
+			<x2-m>1.42</x2-m>
+			<y2-m>3.6</y2-m>
+			<z2-m>0.28</z2-m>
+		</axis>>
+	</animation>
+ 
+ <!-- The gear doors -->
+ 
+ <animation>
+		<type>rotate</type>
+		<object-name>main.geardoorleft</object-name>
+		<property>gear/gear[0]/position-norm</property>
+		<interpolation>
+			<entry>
+				<ind>0.0</ind>
+				<dep>0</dep>
+			</entry>
+			<entry>
+				<ind>0.1</ind>
+				<dep>-90</dep>
+			</entry>
+			<entry>
+				<ind>1.0</ind>
+				<dep>-90</dep>
+			</entry>
+		</interpolation>
+		<center>
+      			<x-m>-5.630</x-m>
+      			<y-m>-0.350</y-m>
+      			<z-m>-0.490</z-m>
+    		</center>
+  		<axis>
+   		 	<x>1</x>
+       			<y>0</y>
+       			<z>0</z>
+   		</axis>
+	</animation>
+	
+	<animation>
+		<type>rotate</type>
+		<object-name>main.geardoorright</object-name>
+		<property>gear/gear[0]/position-norm</property>
+		<interpolation>
+			<entry>
+				<ind>0.0</ind>
+				<dep>0</dep>
+			</entry>
+			<entry>
+				<ind>0.1</ind>
+				<dep>90</dep>
+			</entry>
+			<entry>
+				<ind>1.0</ind>
+				<dep>90</dep>
+			</entry>
+		</interpolation>
+		<center>
+      			<x-m>-5.630</x-m>
+      			<y-m> 0.350</y-m>
+      			<z-m>-0.490</z-m>
+    		</center>
+  		<axis>
+   		 	<x>1</x>
+       			<y>0</y>
+       			<z>0</z>
+   		</axis>
+	</animation>
+	
+	<animation>
+		<type>rotate</type>
+		<object-name>left.geardoor</object-name>
+		<property>gear/gear[1]/position-norm</property>
+		<interpolation>
+			<entry>
+				<ind>0.0</ind>
+				<dep>0</dep>
+			</entry>
+			<entry>
+				<ind>0.01</ind>
+				<dep>-90</dep>
+			</entry>
+			<entry>
+				<ind>1.0</ind>
+				<dep>-90</dep>
+			</entry>
+		</interpolation>
+    		<center>
+      			<x-m>-0.150</x-m>
+      			<y-m>-1.230</y-m>
+      			<z-m> 0.000</z-m>
+    		</center>
+  		<axis>
+   		 	<x>1</x>
+       			<y>0</y>
+       			<z>0</z>
+   		</axis>
+	</animation>
+	
+	<animation>
+		<type>rotate</type>
+		<object-name>right.geardoor</object-name>
+		<property>gear/gear[2]/position-norm</property>
+		<interpolation>
+			<entry>
+				<ind>0.0</ind>
+				<dep>0</dep>
+			</entry>
+			<entry>
+				<ind>0.01</ind>
+				<dep>90</dep>
+			</entry>
+			<entry>
+				<ind>1.0</ind>
+				<dep>90</dep>
+			</entry>
+		</interpolation>
+		<center>
+      			<x-m>-0.150</x-m>
+      			<y-m> 1.230</y-m>
+      			<z-m> 0.000</z-m>
+    		</center>
+  		<axis>
+   		 	<x>1</x>
+       			<y>0</y>
+       			<z>0</z>
+   		</axis>
+	</animation>
+	
+<!-- End of gear door -->
+
+<!-- afterburner -->
+ <model>
+	<path>Aircraft/Mako/Models/Effects/Afterburner/EJ200-L.xml</path>
+	 <offsets>
+			<x-m>6.85</x-m>
+			<y-m>0</y-m>
+			<z-m>0.1</z-m>
+	 </offsets>
+	</model>
+	
+	<model>
+	<path>Aircraft/Mako/Models/Effects/nozzles/Nozzles.xml</path>
+	 <offsets>
+			<x-m>-8.83</x-m>
+			<y-m>0.95</y-m>
+			<z-m>0.3</z-m>
+	 </offsets>
+	</model>
+	
+<!-- Trails and other atmospheric effects -->
+  <model>
+	<path>Aircraft/Mako/Models/Effects/tiptrail/tiptrail.xml</path>
+	 <offsets>
+			<x-m>2</x-m>
+			<y-m>4.04</y-m>
+			<z-m>0.4</z-m>
+	 </offsets>
+	</model>
+	
+	<model>
+	<path>Aircraft/Mako/Models/Effects/tiptrail/tiptrail.xml</path>
+	 <offsets>
+			<x-m>2</x-m>
+			<y-m>-4.04</y-m>
+			<z-m>0.4</z-m>
+	 </offsets>
+	</model>
+	
+
+	
+	
+	<model>
+	<path>Aircraft/Mako/Models/Effects/Vapour/Vapour.xml</path>
+	 <offsets>
+			<x-m>-1</x-m>
+			<y-m>0.00</y-m>
+			<z-m>1.0</z-m>
+	 </offsets>
+	</model>
+	
+		<model>
+	<path>Aircraft/Mako/Models/Effects/Vapour/Vapour2.xml</path>
+	 <offsets>
+			<x-m>2.5</x-m>
+			<y-m>-2.5</y-m>
+			<z-m>0.8</z-m>
+	 </offsets>
+	</model>
+	
+	<model>
+	<path>Aircraft/Mako/Models/Effects/Vapour/Vapour2.xml</path>
+	 <offsets>
+			<x-m>2.5</x-m>
+			<y-m>2.5</y-m>
+			<z-m>0.8</z-m>
+	 </offsets>
+	</model>
+	
+	<model>
+	<path>Aircraft/Mako/Models/Lights/LightPack.xml</path>
+	 <offsets>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>0</z-m>
+	 </offsets>
+	</model>
+	
+ 
+    
+</PropertyList>

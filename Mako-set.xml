@@ -1,0 +1,702 @@
+<?xml version="1.0"?>
+<PropertyList>
+  <sim>
+    <description>EADS Mako/HEAT</description>
+    <author>Rudinei Moura (Model), F-GTUX (Liveries, Weapons) Stuart C + Enrogue (FDM ), Garry Brown ( Liveries )</author>
+    <status>3.0</status>
+    <rating>
+      <FDM type="int">4</FDM>
+      <systems type="int">2</systems>
+      <cockpit type="int">2</cockpit>
+      <model type="int">3</model>
+    </rating>
+    <startup>
+      <splash-texture>Aircraft/Mako/splash.png</splash-texture>
+    </startup>
+    <flight-model>yasim</flight-model>
+    <aero>mako-yasim</aero>
+    <systems>
+      <electrical>
+        <path>Aircraft/Generic/generic-electrical.xml</path>
+      </electrical>
+      <autopilot>
+        <path>Aircraft/Mako/Systems/autopilot.xml</path>
+      </autopilot>
+    </systems>
+    <virtual-cockpit archive="y">true</virtual-cockpit>
+    <allow-toggle-cockpit archive="y">true</allow-toggle-cockpit>
+    <model>
+      <path>Aircraft/Mako/Models/mako.xml</path>
+      <hd-pilot type="bool">true</hd-pilot>
+    </model>
+    <submodels>
+      <serviceable type="bool">true</serviceable>
+      <path>Aircraft/Mako/Submodels.xml</path>
+      <path>Aircraft/Mako/Models/Armament/loads.xml</path>
+    </submodels>
+    <sound>
+      <path>Aircraft/Mako/Sounds/Sound.xml</path>
+    </sound>
+    <view n="0">
+      <internal archive="y">true</internal>
+      <config>
+        <x-offset-m archive="y" type="double">0.00</x-offset-m>
+        <y-offset-m archive="y" type="double">0.7</y-offset-m>
+        <z-offset-m archive="y" type="double">-4.3</z-offset-m>
+        <default-field-of-view-deg type="double">70</default-field-of-view-deg>
+        <pitch-offset-deg>-10</pitch-offset-deg>
+      </config>
+    </view>
+    <view n="100">
+      <name>Co-Pilot</name>
+      <internal archive="y">true</internal>
+      <type>lookfrom</type>
+      <config>
+        <from-model type="bool">true</from-model>
+        <from-model-idx type="int">0</from-model-idx>
+        <x-offset-m archive="y">0</x-offset-m>
+        <y-offset-m archive="y">1</y-offset-m>
+        <z-offset-m archive="y">-2.5</z-offset-m>
+        <pitch-offset-deg>-13</pitch-offset-deg>
+        <default-field-of-view-deg>55</default-field-of-view-deg>
+      </config>
+    </view>
+    <view n="101">
+      <name>Pilot cam</name>
+      <internal archive="y">false</internal>
+      <config>
+        <from-model type="bool">true</from-model>
+        <from-model-idx type="int">0</from-model-idx>
+        <x-offset-m archive="y" type="double">0.00</x-offset-m>
+        <y-offset-m archive="y" type="double">0.7</y-offset-m>
+        <z-offset-m archive="y" type="double">-4.7</z-offset-m>
+        <pitch-offset-deg>0</pitch-offset-deg>
+        <heading-offset-deg>180</heading-offset-deg>
+        <default-field-of-view-deg>95</default-field-of-view-deg>
+      </config>
+    </view>
+    <view n="102">
+      <name>Over the shoulder cam</name>
+      <internal archive="y">false</internal>
+      <config>
+        <from-model type="bool">true</from-model>
+        <from-model-idx type="int">0</from-model-idx>
+        <x-offset-m archive="y">0.300 </x-offset-m>
+        <!-- Right -->
+        <y-offset-m archive="y">0.85 </y-offset-m>
+        <!-- Up    -->
+        <z-offset-m archive="y">-4.0 </z-offset-m>
+        <!-- Back  -->
+        <pitch-offset-deg>-5</pitch-offset-deg>
+        <heading-offset-deg>10</heading-offset-deg>
+        <default-field-of-view-deg>95</default-field-of-view-deg>
+      </config>
+    </view>
+    <autopilot>
+      <config>
+        <min-climb-speed-kt type="float">70.0</min-climb-speed-kt>
+        <best-climb-speed-kt type="float">75.0</best-climb-speed-kt>
+        <target-climb-rate-fpm type="float">500.0</target-climb-rate-fpm>
+        <target-descent-rate-fpm type="float">1000.0</target-descent-rate-fpm>
+        <elevator-adj-factor type="float">4000.0</elevator-adj-factor>
+        <integral-contribution type="float">0.01</integral-contribution>
+        <zero-pitch-throttle type="float">0.45</zero-pitch-throttle>
+        <zero-pitch-trim-full-throttle type="float">0.14</zero-pitch-trim-full-throttle>
+      </config>
+    </autopilot>
+    <hud>
+      <path n="1">Aircraft/Mako/Hud/hud.xml</path>
+      <clipping>
+        <left type="double">-85</left>
+        <right type="double">85</right>
+        <top type="double">50</top>
+        <bottom type="double">-80</bottom>
+      </clipping>
+      <visibility n="1">true</visibility>
+      <palette>
+        <color n="0">
+          <alpha type="float">0.85</alpha>
+          <antialiased type="bool">true</antialiased>
+          <brightness type="float">0.85</brightness>
+          <transparent type="bool">true</transparent>
+          <red type="float">0.38</red>
+          <green type="float">1.0</green>
+          <blue type="float">0.22</blue>
+        </color>
+        <color n="1">
+          <alpha type="float">0.85</alpha>
+          <antialiased type="bool">true</antialiased>
+          <brightness type="float">0.85</brightness>
+          <transparent type="bool">true</transparent>
+          <red type="float">1.0</red>
+          <green type="float">0.2</green>
+          <blue type="float">0.0</blue>
+        </color>
+      </palette>
+    </hud>
+    <help>
+      <title>EADS Mako</title>
+      <key>
+        <name>]</name>
+        <desc>Start/Stop engine</desc>
+      </key>
+     
+      <key>
+        <name>c</name>
+        <desc>Canopy</desc>
+      </key>
+      <key>
+        <name>e</name>
+        <desc>Gun</desc>
+      </key>
+	   <text>
+                Tips:
+                ____Pre selected loadout____
+                Use the MAKO Menu to select one of  many pre selected load options. 
+				Due to a small bug, you still need to select any one item again manually in the Equipment menu to calculate the weight correctly.
+                _____Slats + Flaps_____
+                This aircraft is equipped with automatic slats + flaps
+               
+            </text>
+    </help>
+    <menubar include="Dialogs/menu.xml"/>
+    <weight n="0">
+      <name>pylon1.L</name>
+      <weight-lb>0</weight-lb>
+      <selected>none</selected>
+      <opt>
+        <name>none</name>
+        <lbs>0</lbs>
+      </opt>
+      <opt>
+        <name>AIM-9 Sidewinder</name>
+        <lbs>190.0</lbs>
+      </opt>
+      <opt>
+        <name>MICA</name>
+        <lbs>247.0</lbs>
+      </opt>
+      <opt>
+        <name>IRIS-T</name>
+        <lbs>193.0</lbs>
+      </opt>
+      <opt>
+        <name>AIM-132 ASRAAM</name>
+        <lbs>194.0</lbs>
+      </opt>
+    </weight>
+    <weight n="1">
+      <name>pylon2.L</name>
+      <weight-lb>0</weight-lb>
+      <selected>none</selected>
+      <opt>
+        <name>none</name>
+        <lbs>0</lbs>
+      </opt>
+      <opt>
+        <name>AIM-9 Sidewinder</name>
+        <lbs>190.0</lbs>
+      </opt>
+      <opt>
+        <name>MICA</name>
+        <lbs>247.0</lbs>
+      </opt>
+      <opt>
+        <name>IRIS-T</name>
+        <lbs>193.0</lbs>
+      </opt>
+      <opt>
+        <name>AIM-132 ASRAAM</name>
+        <lbs>194.0</lbs>
+      </opt>
+      <opt>
+        <name>AIM-120 Slammer</name>
+        <lbs>330.0</lbs>
+      </opt>
+      <opt>
+        <name>Meteor</name>
+        <lbs>407.0</lbs>
+      </opt>
+      <opt>
+        <name>GBU-16</name>
+        <lbs>1000.0</lbs>
+      </opt>
+      <opt>
+        <name>AGM-65 Maverick</name>
+        <lbs>670.0</lbs>
+      </opt>
+    </weight>
+    <weight n="2">
+      <name>pylon3.L</name>
+	  <tank>4</tank>
+      <weight-lb>0</weight-lb>
+      <selected>none</selected>
+      <opt>
+        <name>none</name>
+        <lbs>0</lbs>
+      </opt>
+	   <opt>
+        <name>330 Gal Droptank</name>
+        <lbs>184.0</lbs>
+        <gals>330</gals>
+      </opt>
+      <opt>
+        <name>AIM-9 Sidewinder</name>
+        <lbs>190.0</lbs>
+      </opt>
+      <opt>
+        <name>MICA</name>
+        <lbs>247.0</lbs>
+      </opt>
+      <opt>
+        <name>IRIS-T</name>
+        <lbs>193.0</lbs>
+      </opt>
+      <opt>
+        <name>AIM-132 ASRAAM</name>
+        <lbs>194.0</lbs>
+      </opt>
+      <opt>
+        <name>AIM-120 Slammer</name>
+        <lbs>330.0</lbs>
+      </opt>
+      <opt>
+        <name>Meteor</name>
+        <lbs>407.0</lbs>
+      </opt>
+      <opt>
+        <name>GBU-24</name>
+        <lbs>2350.0</lbs>
+      </opt>
+      <opt>
+        <name>GBU-16</name>
+        <lbs>1000.0</lbs>
+      </opt>
+      <opt>
+        <name>AGM-65 Maverick</name>
+        <lbs>670.0</lbs>
+      </opt>
+      <opt>
+        <name>AGM-84 Harpoon</name>
+        <lbs>1140.0</lbs>
+      </opt>
+      <opt>
+        <name>Sea Eagle</name>
+        <lbs>1280.0</lbs>
+      </opt>
+    </weight>
+    <weight n="3">
+      <name>pylon4.C</name>
+      <tank>5</tank>
+      <weight-lb>0</weight-lb>
+      <selected>none</selected>
+      <opt>
+        <name>none</name>
+        <lbs>0</lbs>
+      </opt>
+      <opt>
+        <name>330 Gal Droptank</name>
+        <lbs>184.0</lbs>
+        <gals>330</gals>
+      </opt>
+      <opt>
+        <name>AGM-65 Maverick</name>
+        <lbs>670.0</lbs>
+      </opt>
+      <opt>
+        <name>GBU-24</name>
+        <lbs>2350.0</lbs>
+      </opt>
+    </weight>
+    <weight n="4">
+      <name>pylon5.R</name>
+	  <tank>6</tank>
+      <weight-lb>0</weight-lb>
+      <selected>none</selected>
+      <opt>
+        <name>none</name>
+        <lbs>0</lbs>
+      </opt>
+	   <opt>
+        <name>330 Gal Droptank</name>
+        <lbs>184.0</lbs>
+        <gals>330</gals>
+      </opt>
+      <opt>
+        <name>AIM-9 Sidewinder</name>
+        <lbs>190.0</lbs>
+      </opt>
+      <opt>
+        <name>MICA</name>
+        <lbs>247.0</lbs>
+      </opt>
+      <opt>
+        <name>IRIS-T</name>
+        <lbs>193.0</lbs>
+      </opt>
+      <opt>
+        <name>AIM-132 ASRAAM</name>
+        <lbs>194.0</lbs>
+      </opt>
+      <opt>
+        <name>AIM-120 Slammer</name>
+        <lbs>330.0</lbs>
+      </opt>
+      <opt>
+        <name>Meteor</name>
+        <lbs>407.0</lbs>
+      </opt>
+      <opt>
+        <name>GBU-24</name>
+        <lbs>2350.0</lbs>
+      </opt>
+      <opt>
+        <name>GBU-16</name>
+        <lbs>1000.0</lbs>
+      </opt>
+      <opt>
+        <name>AGM-65 Maverick</name>
+        <lbs>670.0</lbs>
+      </opt>
+      <opt>
+        <name>AGM-84 Harpoon</name>
+        <lbs>1140.0</lbs>
+      </opt>
+      <opt>
+        <name>Sea Eagle</name>
+        <lbs>1280.0</lbs>
+      </opt>
+    </weight>
+    <weight n="5">
+      <name>pylon6.R</name>
+      <weight-lb>0</weight-lb>
+      <selected>none</selected>
+      <opt>
+        <name>none</name>
+        <lbs>0</lbs>
+      </opt>
+      <opt>
+        <name>AIM-9 Sidewinder</name>
+        <lbs>190.0</lbs>
+      </opt>
+      <opt>
+        <name>MICA</name>
+        <lbs>247.0</lbs>
+      </opt>
+      <opt>
+        <name>IRIS-T</name>
+        <lbs>193.0</lbs>
+      </opt>
+      <opt>
+        <name>AIM-132 ASRAAM</name>
+        <lbs>194.0</lbs>
+      </opt>
+      <opt>
+        <name>AIM-120 Slammer</name>
+        <lbs>330.0</lbs>
+      </opt>
+      <opt>
+        <name>Meteor</name>
+        <lbs>407.0</lbs>
+      </opt>
+      <opt>
+        <name>GBU-16</name>
+        <lbs>1000.0</lbs>
+      </opt>
+      <opt>
+        <name>AGM-65 Maverick</name>
+        <lbs>670.0</lbs>
+      </opt>
+    </weight>
+    <weight n="6">
+      <name>pylon7.R</name>
+      <weight-lb>0</weight-lb>
+      <selected>none</selected>
+      <opt>
+        <name>none</name>
+        <lbs>0</lbs>
+      </opt>
+      <opt>
+        <name>AIM-9 Sidewinder</name>
+        <lbs>190.0</lbs>
+      </opt>
+      <opt>
+        <name>MICA</name>
+        <lbs>247.0</lbs>
+      </opt>
+      <opt>
+        <name>IRIS-T</name>
+        <lbs>193.0</lbs>
+      </opt>
+      <opt>
+        <name>AIM-132 ASRAAM</name>
+        <lbs>194.0</lbs>
+      </opt>
+    </weight>
+    <multiplay>
+      <generic>
+        <!-- Nav lights on -->
+        <int alias="/controls/lighting/nav-lights-switch" n="0"/>
+        <!-- Beacon on -->
+        <int alias="/controls/lighting/beacon-switch" n="1"/>
+        <int n="2" type="int">0</int>
+        <!-- radar-standby -->
+        <!-- Landing lights on -->
+        <int alias="/controls/lighting/landing-lights-switch" n="3"/>
+        <int alias="/engines/engine[0]/state" n="5"/>
+        <int alias="/sim/crashed" n="7"/>
+        <int alias="/engines/engine[0]/running" n="8"/>
+
+        <float alias="/engines/engine[0]/n1" n="7"/>
+        <!-- Reheat Left Engine -->
+        <float alias="/engines/engine[0]/afterburner" n="8"/>
+        
+        <float alias="/engines/engine/spoolup" n="9"/>
+        <float alias="/velocities/mach" n="15"/>
+        <!-- Mach for Multiplayer Sound -->
+        <float alias="/engines/engine[0]/thrust-lbs" n="16"/>
+        <!-- Thrust for Multiplayer Sound -->
+        <string alias="/sim/weight[0]/selected" n="0"/>
+        <string alias="/sim/weight[1]/selected" n="1"/>
+        <string alias="/sim/weight[2]/selected" n="2"/>
+        <string alias="/sim/weight[3]/selected" n="3"/>
+        <string alias="/sim/weight[4]/selected" n="4"/>
+        <string alias="/sim/weight[5]/selected" n="5"/>
+        <string alias="/sim/weight[6]/selected" n="6"/>
+      </generic>
+    </multiplay>
+  </sim>
+  <environment>
+    <turbulence>
+      <use-cloud-turbulence>true</use-cloud-turbulence>
+    </turbulence>
+  </environment>
+  <engines>
+    <engine>
+      <rpm type="double">700</rpm>
+    </engine>
+  </engines>
+  <!-- set prop for the manual "bookmark" arrow on the remote compas -->
+  <instrumentation>
+    <magnetic-compass>
+      <bookmark-heading-deg type="double">43.0</bookmark-heading-deg>
+    </magnetic-compass>
+    <enav>
+      <selected type="int">3</selected>
+    </enav>
+    <radar>
+      <range archive="y" type="int">20</range>
+      <minimized archive="y" type="bool">false</minimized>
+      <selected type="int">3</selected>
+      <!-- inicio en pruebas -->
+      <enabled type="bool">true</enabled>
+      <az-field type="double">120</az-field>
+      <range type="double">150</range>
+      <range-selected type="double">50</range-selected>
+      <radar2-range type="double">150</radar2-range>
+      <display-rdr type="bool">true</display-rdr>
+      <radar-standby type="int">3</radar-standby>
+      <mode>
+        <rws type="bool">true</rws>
+        <tws-auto type="bool">false</tws-auto>
+      </mode>
+    </radar>
+    <efis>
+      <ecam>
+        <display-mode type="string">FUEL</display-mode>
+      </ecam>
+      <nd>
+        <display-mode type="string">VOR</display-mode>
+        <display-mode-knob type="int">2</display-mode-knob>
+        <display-range type="int">60</display-range>
+      </nd>
+      <input>
+        <vor-adf-1 type="int">1</vor-adf-1>
+        <vor-adf-2 type="int">1</vor-adf-2>
+        <CSTR type="bool">1</CSTR>
+        <WPT type="bool">1</WPT>
+        <VORD type="bool">1</VORD>
+        <NDB type="bool">1</NDB>
+        <ARPT type="bool">1</ARPT>
+        <WX type="bool">1</WX>
+        <TERR type="bool">1</TERR>
+        <TRAF type="bool">1</TRAF>
+        <taxi type="bool">1</taxi>
+      </input>
+    </efis>
+  </instrumentation>
+  <!-- set up control properties for YASim -->
+  <controls>
+    <engines>
+      <engine n="0">
+        <magnetos>3</magnetos>
+        <boost type="double">0.0</boost>
+        <throttle type="float">0.001</throttle>
+      </engine>
+    </engines>
+    <gear>
+      <tailwheel-lock>false</tailwheel-lock>
+      <brake-parking>1</brake-parking>
+    </gear>
+    <lighting>
+      <strobe type="bool">true</strobe>
+    </lighting>
+  </controls>
+  <canopy>
+    <canopy-pos-norm type="float">0</canopy-pos-norm>
+  </canopy>
+  <yasim>
+    <weights>
+      <pilot-lb>180</pilot-lb>
+    </weights>
+  </yasim>
+  <input>
+    <keyboard>
+      <key n="99">
+        <name>c</name>
+        <desc>Open/close canopy</desc>
+        <binding>
+          <command>nasal</command>
+          <script>mako.doorsystem.crewexport();</script>
+        </binding>
+      </key>
+      <key n="101">
+        <name>e</name>
+        <desc>Gun</desc>
+        <binding>
+          <command>property-assign</command>
+          <property>controls/armament/trigger</property>
+          <value>true</value>
+        </binding>
+        <mod-up>
+          <binding>
+            <command>property-assign</command>
+            <property>controls/armament/trigger</property>
+            <value>false</value>
+          </binding>
+        </mod-up>
+      </key>
+      <key n="125">
+        <name>}</name>
+        <desc>Engine Autostart</desc>
+        <binding>
+          <command>nasal</command>
+          <script>emu.autostart();</script>
+        </binding>
+      </key>
+      <key n="117">
+         <name>u</name>
+         <desc>Prev Pylon</desc>
+         <binding>
+            <command>nasal</command>
+            <script>weapons.ChoosePrevPylon()</script>
+          </binding>
+      </key>
+      <key n="85">
+         <name>U</name>
+         <desc>Next Pylon</desc>
+         <binding>
+            <command>nasal</command>
+            <script>weapons.ChooseNextPylon()</script>
+          </binding>
+      </key>
+      <key n="74">
+        <name>J</name>
+        <desc>Select Pointed Ground Position as Target</desc>
+        <binding>
+           <command>nasal</command>
+           <script>weapons.target_des()</script>
+        </binding>
+      </key>
+    </keyboard>
+  </input>
+  <limits>
+    <max-positive-g>9</max-positive-g>
+    <max-negative-g>-3</max-negative-g>
+  </limits>
+  <nasal>
+    <mako>
+      <file>Aircraft/Mako/Nasal/hud.nas</file>
+      <file>Aircraft/Mako/Nasal/liveries.nas</file>
+      <file>Aircraft/Mako/Nasal/doors.nas</file>
+      <file>Aircraft/Mako/Nasal/payload.nas</file>
+    </mako>
+	
+	<fuel>
+   <file>Aircraft/Mako/Nasal/fuel.nas</file>
+  </fuel>
+	
+    <enav>
+      <file>Aircraft/Mako/Nasal/enav.nas</file>
+    </enav>
+    <terrain-map>
+      <file>Aircraft/Mako/Nasal/terrain-map.nas</file>
+    </terrain-map>
+    <radar>
+      <file>Aircraft/Mako/Nasal/radar.nas</file>
+    </radar>
+    <radar2>
+      <file>Aircraft/Mako/Nasal/radar2.nas</file>
+    </radar2>
+    <lights>
+      <file>Aircraft/Mako/Nasal/Lights.nas</file>
+    </lights>
+    <engines>
+      <file>Aircraft/Mako/Nasal/generic-yasim-engine.nas</file>
+    </engines>
+    <emu>
+      <file>Aircraft/Mako/Nasal/emu.nas</file>
+    </emu>
+    <load>
+      <file>Aircraft/Mako/Nasal/ext_stores.nas</file>
+    </load>
+    <weapons>
+      <file>Aircraft/Mako/Nasal/weapons_managment.nas</file>
+    </weapons>
+    <datasave>
+      <script>
+      aircraft.data.load();
+      
+      var savedata = [
+          # This is a list of properties saved on exit
+          "/sim/model/hd-pilot",
+      ];
+      aircraft.data.add(savedata);
+      </script>
+    </datasave>
+  </nasal>
+  <consumables>
+    <fuel>
+      <tank n="0">
+        <level-gal_us archive="y">230</level-gal_us>
+      </tank>
+      <tank n="1">
+        <level-gal_us archive="y">230</level-gal_us>
+      </tank>
+      <tank n="2">
+        <level-gal_us archive="y">160</level-gal_us>
+      </tank>
+      <tank n="3">
+        <level-gal_us archive="y">160</level-gal_us>
+      </tank>
+      <tank n="4">
+        <name>Left Droptank</name>
+        <selected type="bool">true</selected>
+        <level-gal_us archive="y">0</level-gal_us>
+        <level-lbs archive="y">0</level-lbs>
+      </tank>
+	  <tank n="5">
+        <name>Centre Droptank</name>
+        <selected type="bool">true</selected>
+        <level-gal_us archive="y">0</level-gal_us>
+        <level-lbs archive="y">0</level-lbs>
+      </tank>
+	  <tank n="6">
+        <name>Right Droptank</name>
+        <selected type="bool">true</selected>
+        <level-gal_us archive="y">0</level-gal_us>
+        <level-lbs archive="y">0</level-lbs>
+      </tank>
+    </fuel>
+  </consumables>
+</PropertyList>

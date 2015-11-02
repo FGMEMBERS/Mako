@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>tank330.ac</path>
+
+  <animation>
+    <object-name>Tank</object-name>
+  </animation>
+
+</PropertyList>

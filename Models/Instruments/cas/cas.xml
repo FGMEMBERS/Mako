@@ -1,0 +1,257 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+    <path>cas.ac</path>
+
+    <animation>
+	<type>range</type>
+	<min-m>0</min-m>
+	<max-m>10</max-m>
+    </animation>
+ 
+  <animation>
+         <object-name>base</object-name>
+         <object-name>SW</object-name>
+         <object-name>SW-on</object-name>
+         <object-name>SW-base</object-name>
+         <object-name>SW.001</object-name>
+         <object-name>SW.001-on</object-name>
+         <object-name>SW-base.001</object-name>
+         <object-name>SW.002</object-name>
+         <object-name>SW.002-on</object-name>
+         <object-name>SW-base.002</object-name>
+         <object-name>SW.003</object-name>
+         <object-name>SW-base.003</object-name>
+         <object-name>SW.004</object-name>
+         <object-name>SW-base.004</object-name>
+         <object-name>SW-base.005</object-name>
+     <type>material</type>
+     <emission> 
+      <factor-prop>systems/electrical/outputs/instrument-lights-norm</factor-prop>
+        <red>0.5</red>
+        <green>0.2</green>
+        <blue>0.2</blue>
+      </emission>
+  </animation> 
+
+
+
+  <animation>
+  <object-name>xmt.annun</object-name>
+   <type>material</type>
+     <emission>
+      <factor-prop>systems/electrical/outputs/instrument-lights-norm</factor-prop>
+        <red>  1.0 </red>
+        <green>1.0 </green>
+        <blue> 1.0 </blue>
+     </emission>
+  </animation> 
+
+
+
+<!-- CAS -->
+    <animation>
+        <type>select</type>
+        <object-name>xmt.annun</object-name>
+        <condition>
+             <and>
+             <not>
+               <equals>
+                <property>instrumentation/tacan/display/x-shift</property>
+                <value> 0 </value>
+               </equals>
+             </not>
+             <property>instrumentation/tacan/serviceable</property>
+	     <greater-than>
+		<property>systems/electrical/volts</property>
+		<value>24</value>
+	      </greater-than>
+             </and>
+        </condition>
+    </animation>  
+
+
+<!-- PITCH -->
+
+    <animation>
+        <type>pick</type>
+        <object-name>SW.002</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+            <command>property-assign</command>
+            <property>autopilot/locks/altitude</property>
+            <value>pitch-hold</value>
+            </binding>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/sound/click</property>
+      </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>SW.002-on</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+            <command>property-assign</command>
+            <property>autopilot/locks/altitude</property>
+            <value></value>
+            </binding>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/sound/click</property>
+      </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>SW.002</object-name>
+        <condition>
+          <equals>
+            <property>autopilot/locks/altitude</property>
+            <value></value>
+          </equals>
+        </condition>
+    </animation> 
+
+    <animation>
+        <type>select</type>
+        <object-name>SW.002-on</object-name>
+        <condition>
+          <equals>
+            <property>autopilot/locks/altitude</property>
+            <value>pitch-hold</value>
+          </equals>
+        </condition>
+    </animation>
+
+
+<!-- ROLL -->
+
+    <animation>
+        <type>pick</type>
+        <object-name>SW.001</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+            <command>property-assign</command>
+            <property>autopilot/locks/heading</property>
+            <value>wing-leveler</value>
+            </binding>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/sound/click</property>
+      </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>SW.001-on</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+            <command>property-assign</command>
+            <property>autopilot/locks/heading</property>
+            <value></value>
+            </binding>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/sound/click</property>
+      </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>SW.001</object-name>
+        <condition>
+          <equals>
+            <property>autopilot/locks/heading</property>
+            <value></value>
+          </equals>
+        </condition>
+    </animation> 
+
+    <animation>
+        <type>select</type>
+        <object-name>SW.001-on</object-name>
+        <condition>
+          <equals>
+            <property>autopilot/locks/heading</property>
+            <value>wing-leveler</value>
+          </equals>
+        </condition>
+    </animation>
+
+
+<!-- ASI -->
+
+    <animation>
+        <type>pick</type>
+        <object-name>SW</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+            <command>property-assign</command>
+            <property>autopilot/locks/speed</property>
+            <value>speed-with-throttle</value>
+            </binding>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/sound/click</property>
+      </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>SW-on</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+            <command>property-assign</command>
+            <property>autopilot/locks/speed</property>
+            <value></value>
+            </binding>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/sound/click</property>
+      </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>SW</object-name>
+        <condition>
+          <equals>
+            <property>autopilot/locks/speed</property>
+            <value></value>
+          </equals>
+        </condition>
+    </animation> 
+
+    <animation>
+        <type>select</type>
+        <object-name>SW-on</object-name>
+        <condition>
+          <equals>
+            <property>autopilot/locks/speed</property>
+            <value>speed-with-throttle</value>
+          </equals>
+        </condition>
+    </animation>
+ 
+</PropertyList>

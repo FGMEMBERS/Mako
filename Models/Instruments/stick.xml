@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	<path>stick.ac</path>
+	
+  <animation>
+		<type>rotate</type>
+		<object-name>stick1</object-name>
+		<property>/controls/flight/elevator</property>
+		<factor>-8</factor>
+		<center>
+			<x-m>0.05075</x-m>
+			<y-m>-0.004888</y-m>
+			<z-m>-0.0525301</z-m>
+		</center>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>rotate</type>
+		<object-name>stick1</object-name>
+		<property>/controls/flight/aileron</property>
+		<factor>-16</factor>
+		<center>
+			<x-m>0.05075</x-m>
+			<y-m>-0.004888</y-m>
+			<z-m>-0.0525301</z-m>
+		</center>
+		<axis>
+			<x>1.0</x>
+			<y>0.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>	
+	
+</PropertyList>
